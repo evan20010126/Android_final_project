@@ -63,12 +63,13 @@
             </LinearLayout>
         </RelativeLayout>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cat_imgview">
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/cat_imgview"
+            android:scaleType="centerInside">
         </ImageView>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true">
@@ -79,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Treasure"
-                android:layout_marginHorizontal="1sp"
+                android:layout_marginHorizontal="3sp"
                 android:id="@+id/Treasure_btn">
             </Button>
             <Button
@@ -87,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Fight"
-                android:layout_marginHorizontal="1sp"
+                android:layout_marginHorizontal="3sp"
                 android:id="@+id/Fight_btn">
             </Button>
             <Button
@@ -95,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Store"
-                android:layout_marginHorizontal="1sp"
+                android:layout_marginHorizontal="3sp"
                 android:id="@+id/Store_btn">
             </Button>
         </LinearLayout>

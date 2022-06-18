@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         handler.post(runnable)
+
     }
 
     override fun onStart() {
@@ -85,4 +86,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-val img_id_arr = intArrayOf(R.drawable.cat_run1, R.drawable.cat_run2)
+val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
