@@ -5,5 +5,153 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StoreActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    tools:ignore="MissingConstraints">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/store"
+            android:id="@+id/level_num"
+            android:textSize="25sp"
+            android:gravity="center"
+            tools:ignore="MissingConstraints" />
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:collapseColumns="*" >
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                tools:ignore="UselessParent">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src = "@drawable/modifygun">
+                    </ImageView>
+                    <Button
+                        android:id="@+id/buycola"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30$">
+                    </Button>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src = "@drawable/cola">
+                    </ImageView>
+                    <Button
+                        android:id="@+id/buybread"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30$">
+                    </Button>
+                </LinearLayout>
+            </TableRow>
+            <TableRow>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src = "@drawable/modifygun">
+                    </ImageView>
+                    <Button
+                        android:id="@+id/buyhat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30$">
+                    </Button>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src = "@drawable/cola">
+                    </ImageView>
+                    <Button
+                        android:id="@+id/buyax"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30$">
+                    </Button>
+                </LinearLayout>
+            </TableRow>
+            <TableRow>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src = "@drawable/modifygun">
+                    </ImageView>
+                    <Button
+                        android:id="@+id/buyKnife"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30$">
+                    </Button>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src = "@drawable/cola">
+                    </ImageView>
+                    <Button
+                        android:id="@+id/buygun"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="30$">
+                    </Button>
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

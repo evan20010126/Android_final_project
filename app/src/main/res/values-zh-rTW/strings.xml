@@ -16,4 +16,12 @@
     <string name="pay_button">付款:)</string>
     <!--    activity_fighting-->
     <string name="level_num">等級</string>
+
+    <string name="store">商店</string>
+
+    <string name="treasurePosition">寶藏地點:</string>
+    <string name="currentPosition">目前地點:</string>
+    <string name="distanceTo">距離寶藏:</string>
+    <string name="navigation">Navigaion</string>
+    <string name="string_to_vip">升級VIP即可開啟導航功能</string>
 </resources>

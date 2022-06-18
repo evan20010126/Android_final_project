@@ -15,4 +15,12 @@
     <string name="pay_button">PAY :)</string>
     <!--    activity_fighting-->
     <string name="level_num">Level</string>
+    <!--    activity_stroe-->
+    <string name="store">Store</string>
+
+    <string name="treasurePosition">Treasure Position:</string>
+    <string name="currentPosition">Current Position:</string>
+    <string name="distanceTo">Distance to Treasure:</string>
+    <string name="navigation">Navigation</string>
+    <string name="string_to_vip">Upgrade VIP To Use Navigation</string>
 </resources>
