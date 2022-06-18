@@ -8,6 +8,7 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.scaleMatrix
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,8 +28,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var Points_tv: TextView
 
     /*UI repeat*/
-    lateinit var cat: ImageView
+    lateinit var cat_imgview: ImageView
     lateinit var runnable: Runnable
+    var index = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         Identity_tv = findViewById(R.id.Identity_tv)
         Points_tv = findViewById(R.id.Points_tv)
+
+        cat_imgview = findViewById(R.id.cat_imgview)
 
         var intent = Intent()
         VIP_btn.setOnClickListener{
@@ -62,11 +66,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         var handler = Handler(Looper.getMainLooper())
-        runnable = Runnable{
 
-            handler.postDelayed(runnable, 1000)
+        runnable = Runnable{
+            cat_imgview.setImageResource(img_id_arr[index%2])
+            index++
+            if (index%10 == 0) {
+                cat_imgview.scaleX *= -1
+            }
+            handler.postDelayed(runnable, 500)
         }
 
+        handler.post(runnable)
     }
 
     override fun onStart() {
@@ -74,3 +84,5 @@ class MainActivity : AppCompatActivity() {
         // 寫讀資料庫
     }
 }
+
+val img_id_arr = intArrayOf(R.drawable.cat_run1, R.drawable.cat_run2)
