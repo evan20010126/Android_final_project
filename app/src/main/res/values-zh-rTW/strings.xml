@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Android_final_project</string>
+    <string name="VIP">VIP</string>
+    <string name="Identity">身分: </string>
+    <string name="Points">金幣: </string>
+    <string name="Treasure">寶藏</string>
+    <string name="Fight">挑戰</string>
+    <string name="Store">商店</string>
 </resources>
