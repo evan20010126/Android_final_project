@@ -16,14 +16,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="16dp"
             android:text="@string/treasurePosition">
         </TextView>
         <TextView
             android:id="@+id/treasurePoision"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="16dp"
             android:text="121.159.222">
         </TextView>
     </LinearLayout>
@@ -34,14 +34,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="16dp"
             android:text="@string/currentPosition">
         </TextView>
         <TextView
             android:id="@+id/currentPoision"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="16dp"
             android:text="121.159.222">
         </TextView>
     </LinearLayout>
@@ -52,14 +52,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="16dp"
             android:text="@string/distanceTo">
         </TextView>
         <TextView
             android:id="@+id/distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="16dp"
             android:text="121.159.222">
         </TextView>
     </LinearLayout>
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="26sp"
+        android:textSize="16dp"
         android:text="@string/string_to_vip">
     </TextView>
 </LinearLayout>
