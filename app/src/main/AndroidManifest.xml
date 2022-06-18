@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_final_project">
         <activity
+            android:name=".MusicActivity"
+            android:exported="false" />
+        <activity
             android:name=".VipActivity"
             android:exported="false" />
         <activity

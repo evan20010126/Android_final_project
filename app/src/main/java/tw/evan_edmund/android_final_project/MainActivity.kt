@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.scaleMatrix
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     /* Button */
     lateinit var VIP_btn: Button
+    lateinit var Music_btn: ImageButton
     lateinit var Treasure_btn: Button
     lateinit var Fight_btn: Button
     lateinit var Store_btn: Button
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     /*UI repeat*/
     lateinit var cat_imgview: ImageView
+    lateinit var hat_imgview: ImageView
+    lateinit var weapon_imgview: ImageView
     lateinit var runnable: Runnable
     var index = 0
 
@@ -38,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         VIP_btn = findViewById(R.id.VIP_btn)
+        Music_btn = findViewById(R.id.music_btn)
         Treasure_btn = findViewById(R.id.Treasure_btn)
         Fight_btn = findViewById(R.id.Fight_btn)
         Store_btn = findViewById(R.id.Store_btn)
@@ -46,10 +51,19 @@ class MainActivity : AppCompatActivity() {
         Points_tv = findViewById(R.id.Points_tv)
 
         cat_imgview = findViewById(R.id.cat_imgview)
+        hat_imgview = findViewById(R.id.hat_imgview)
+        weapon_imgview = findViewById(R.id.weapon_imgview)
+
+        hat_imgview.setImageResource(hat_id_arr[0])
+        weapon_imgview.setImageResource(weapon_id_arr[1])
 
         var intent = Intent()
         VIP_btn.setOnClickListener{
             intent.setClass(this@MainActivity, VipActivity::class.java)
+            this.startActivity(intent)
+        }
+        Music_btn.setOnClickListener{
+            intent.setClass(this@MainActivity, MusicActivity::class.java)
             this.startActivity(intent)
         }
         Treasure_btn.setOnClickListener{
@@ -72,6 +86,8 @@ class MainActivity : AppCompatActivity() {
             index++
             if (index%10 == 0) {
                 cat_imgview.scaleX *= -1
+                weapon_imgview.scaleX *= -1
+                hat_imgview.scaleX *= -1
             }
             handler.postDelayed(runnable, 500)
         }
@@ -87,3 +103,5 @@ class MainActivity : AppCompatActivity() {
 }
 
 val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
+val weapon_id_arr = intArrayOf(R.drawable.modifyax, R.drawable.modifygun)
+val hat_id_arr = intArrayOf(R.drawable.modifyhat,)
