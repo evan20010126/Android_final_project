@@ -23,4 +23,6 @@
     <string name="distanceTo">Distance to Treasure:</string>
     <string name="navigation">Navigation</string>
     <string name="string_to_vip">Upgrade VIP To Use Navigation</string>
+
+    <string name="hp">HP: </string>
 </resources>
