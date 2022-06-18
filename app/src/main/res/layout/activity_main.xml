@@ -111,7 +111,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/cat_imgview"
-            android:layout_above="@+id/last_row">
+            android:layout_above="@+id/last_row"
+            android:adjustViewBounds="true">
         </ImageView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
