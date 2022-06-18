@@ -67,11 +67,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/cat_imgview">
         </ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:id = "@+id/last_row">
             // https://evanchen76.medium.com/android-ui-%E4%BD%88%E5%B1%80part5-%E5%85%83%E4%BB%B6%E7%9A%84%E5%B1%AC%E6%80%A7-b4831205f526
             // layout_weight控制排版
             <Button
@@ -99,5 +101,13 @@
                 android:id="@+id/Store_btn">
             </Button>
         </LinearLayout>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/presure"
+            android:layout_above="@+id/last_row"
+            >
+        </ImageButton>
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

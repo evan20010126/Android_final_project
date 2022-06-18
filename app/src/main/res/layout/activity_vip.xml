@@ -5,61 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VipActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/upgrade_vip"
-        android:textSize="25sp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints" />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/visa"
-        android:layout_gravity="center"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/account"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/account"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/verification"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/verification_code"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/valid_date"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/valid_date"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="25sp"
-        android:text="@string/pay_button"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/upgrade_vip"
+                android:textSize="25sp"
+                android:gravity="center"
+                tools:ignore="MissingConstraints" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/visa"
+                android:layout_gravity="center"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/account"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/verification"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/verification_code"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/valid_date"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/valid_date"
+                tools:ignore="MissingConstraints" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:text="@string/pay_button"/>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
