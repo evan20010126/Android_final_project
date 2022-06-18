@@ -1,9 +1,19 @@
 <resources>
-    <string name="app_name">Android_final_project</string>
+    <string name="app_name">安卓期末專案</string>
+
     <string name="VIP">VIP</string>
     <string name="Identity">身分: </string>
     <string name="Points">金幣: </string>
     <string name="Treasure">寶藏</string>
     <string name="Fight">挑戰</string>
     <string name="Store">商店</string>
+
+    <!--    activity_vip-->
+    <string name="upgrade_vip">升級VIP</string>
+    <string name="account">請輸入卡號:</string>
+    <string name="verification">請輸入驗證碼:</string>
+    <string name="valid_date">有效日期:</string>
+    <string name="pay_button">付款:)</string>
+    <!--    activity_fighting-->
+    <string name="level_num">等級</string>
 </resources>

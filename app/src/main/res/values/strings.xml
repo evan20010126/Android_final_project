@@ -7,4 +7,12 @@
     <string name="Fight">Fight</string>
     <string name="Store">Store</string>
 
+    <!--    activity_vip-->
+    <string name="upgrade_vip">Upgrade VIP</string>
+    <string name="account">Credit Card Number:</string>
+    <string name="verification">Security Verification code:</string>
+    <string name="valid_date">Valid date:</string>
+    <string name="pay_button">PAY :)</string>
+    <!--    activity_fighting-->
+    <string name="level_num">Level</string>
 </resources>
