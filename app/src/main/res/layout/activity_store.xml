@@ -31,7 +31,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="100"
+                     android:text="100/100"
                      android:textSize="22sp"
                      android:id="@+id/hp_num"/>
              </LinearLayout>

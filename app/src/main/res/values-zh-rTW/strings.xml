@@ -26,4 +26,8 @@
     <string name="string_to_vip">升級VIP即可開啟導航功能</string>
 
     <string name="hp">HP: </string>
+
+    <string name="stop">停止</string>
+    <string name="start">開始</string>
+    <string name="pause">暫停</string>
 </resources>

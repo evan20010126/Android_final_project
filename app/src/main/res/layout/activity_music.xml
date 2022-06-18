@@ -5,5 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MusicActivity">
+<!--<ScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3sp"
+                android:text="@string/pause">
+            </Button>
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3sp"
+                android:text="@string/start">
+            </Button>
+            <Button
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3sp"
+                android:text="@string/stop">
+            </Button>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/img_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/modifyhat">
+                </ImageView>
 
+                <ListView
+                    android:id="@+id/music_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </ListView>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+<!--</ScrollView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

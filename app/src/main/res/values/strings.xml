@@ -26,4 +26,8 @@
     <string name="string_to_vip">Upgrade VIP To Use Navigation</string>
 
     <string name="hp">HP: </string>
+
+    <string name="stop">STOP</string>
+    <string name="start">start</string>
+    <string name="pause">Pause</string>
 </resources>
