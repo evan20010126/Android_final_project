@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Android_final_project</string>
     <string name="VIP">VIP</string>
+    <string name="General">General</string>
     <string name="Identity">Identity: </string>
     <string name="Points">Points: </string>
     <string name="Treasure">Treasure</string>

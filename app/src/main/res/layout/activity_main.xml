@@ -40,7 +40,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="General"
                         android:textSize="18sp"
                         android:id="@+id/Identity_tv"/>
                 </LinearLayout>
@@ -56,7 +55,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="0"
                         android:textSize="18sp"
                         android:id="@+id/Points_tv"/>
                 </LinearLayout>
@@ -72,7 +70,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="100/100"
                         android:textSize="18sp"
                         android:id="@+id/hp"/>
                 </LinearLayout>

@@ -1,6 +1,8 @@
 package tw.evan_edmund.android_final_project
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -14,8 +16,16 @@ import androidx.core.graphics.scaleMatrix
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        val KEY_MONTH: String = "KEY_MONTH"
-        val KEY_DAY: String = "KEY_DAY"
+        val XMLFILE: String = "GAME_DATA"
+        val KEY_IDENTITY: String = "KEY_IDENTITY"
+        val KEY_POINTS: String = "KEY_POINTS"
+        val KEY_MAXBLOOD: String = "KEY_MAXBLOOD"
+        val KEY_BLOOD: String = "KEY_BLOOD"
+
+        val KEY_HAT: String = "KEY_HAT"
+        val KEY_WEAPON: String = "KEY_WEAPON"
+        val KEY_LEVEL: String = "KEY_LEVEL"
+
     }
 
     /* Button */
@@ -28,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     /* TextView */
     lateinit var Identity_tv: TextView
     lateinit var Points_tv: TextView
+    lateinit var Hp_tv: TextView
 
     /*UI repeat*/
     lateinit var cat_imgview: ImageView
@@ -49,13 +60,13 @@ class MainActivity : AppCompatActivity() {
 
         Identity_tv = findViewById(R.id.Identity_tv)
         Points_tv = findViewById(R.id.Points_tv)
+        Hp_tv = findViewById(R.id.hp)
 
         cat_imgview = findViewById(R.id.cat_imgview)
         hat_imgview = findViewById(R.id.hat_imgview)
         weapon_imgview = findViewById(R.id.weapon_imgview)
 
-        hat_imgview.setImageResource(hat_id_arr[0])
-        weapon_imgview.setImageResource(weapon_id_arr[1])
+
 
         var intent = Intent()
         VIP_btn.setOnClickListener{
@@ -98,8 +109,45 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // 寫讀資料庫
+
+        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
+        val pref: SharedPreferences = this.getSharedPreferences(
+            MainActivity.XMLFILE,
+            AppCompatActivity.MODE_PRIVATE
+        ) // android內部會用一個檔案XMLFILE.xml(用xml檔存)來儲存要儲存的data
+        // 第一個參數: xml的主檔名
+        // 以前有Context.MODE_WORLD_READABLE: 整個手機的其他app都可以讀但危險，所以之後沒得選只能選Context.MODE_PRIVATE
+
+        // sharepreference 為 key value的概念
+        val my_level = pref.getInt(MainActivity.KEY_LEVEL, 1)
+        val my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
+        val my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
+        val my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
+        val my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
+        val my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
+        val my_points = pref.getInt(MainActivity.KEY_POINTS, 0)
+
+        if (my_weapon != -1) {
+            hat_imgview.setImageResource(hat_id_arr[my_hat])
+            weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
+        }
+
+        if (my_identity == "General"){
+            Identity_tv.setText(R.string.General)
+        }else if(my_identity == "VIP"){
+            Identity_tv.setText(R.string.VIP)
+        }
+        Points_tv.setText(my_points.toString())
+        Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
+
+        //        Identity_tv.setText(R.string.VIP)
+
+        // 取資料，第二個參數為default value(若是第一次執行 一開始根本沒有此xml檔 so根本沒有KEY_MONTH的key 會用default value)
+        //        etMonth?.setText(pref_month) // 把資料放在edittext上
+        //        val intDay = pref.getInt(KEY_DAY, 1);
+        //        etDay?.setText("" + intDay);
     }
+
 }
 
 val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)

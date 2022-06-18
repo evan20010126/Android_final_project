@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">安卓期末專案</string>
-
     <string name="VIP">VIP</string>
+    <string name="General">一般</string>
     <string name="Identity">身分: </string>
     <string name="Points">金幣: </string>
     <string name="Treasure">寶藏</string>
