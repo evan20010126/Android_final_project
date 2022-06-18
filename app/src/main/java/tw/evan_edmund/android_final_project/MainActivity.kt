@@ -3,7 +3,10 @@ package tw.evan_edmund.android_final_project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     /* TextView */
     lateinit var Identity_tv: TextView
     lateinit var Points_tv: TextView
+
+    /*UI repeat*/
+    lateinit var cat: ImageView
+    lateinit var runnable: Runnable
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +60,13 @@ class MainActivity : AppCompatActivity() {
             intent.setClass(this@MainActivity, StoreActivity::class.java)
             this.startActivity(intent)
         }
+
+        var handler = Handler(Looper.getMainLooper())
+        runnable = Runnable{
+
+            handler.postDelayed(runnable, 1000)
+        }
+
     }
 
     override fun onStart() {
