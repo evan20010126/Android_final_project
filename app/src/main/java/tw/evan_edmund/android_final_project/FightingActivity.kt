@@ -132,6 +132,8 @@ class FightingActivity : AppCompatActivity() {
             boss_atk_tv.setText("ATK: ${boss_atk[my_level]}")
 
         }else{
+            boss_img.setImageResource(R.drawable.modifywhite)
+            boss_img.setEnabled(false)
             // game over!
         }
 
@@ -169,5 +171,5 @@ class FightingActivity : AppCompatActivity() {
     val boss_id_arr =  intArrayOf(R.drawable.modifymeow,R.drawable.modifymouse,R.drawable.modifyteacher)
     val boss_max_blood = intArrayOf(50, 2000, 50000)
     val boss_blood = intArrayOf(50, 2000, 50000)
-    val boss_atk = intArrayOf(10, 50, 100)
+    val boss_atk = intArrayOf(10, 30, 100)
 }
