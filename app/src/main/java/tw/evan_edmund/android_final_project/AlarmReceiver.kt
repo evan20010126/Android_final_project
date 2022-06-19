@@ -31,6 +31,7 @@ class AlarmReceiver : BroadcastReceiver() {
             ).show()
             MainActivity.treasureDicision.open = false
             MainActivity.refresh.refresh = true
+            MainActivity.first.first_enter_treasure = true
         }
         else{
             val am = context.getSystemService(Context.ALARM_SERVICE) as?

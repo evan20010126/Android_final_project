@@ -33,6 +33,8 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     lateinit var runnable: Runnable
     lateinit var nav_btn : Button
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -60,33 +62,8 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
     override fun onStart() {
         super.onStart()
+        Log.w("onstarthihi","onstarthihi2")
 
-        locmgr = getSystemService(LOCATION_SERVICE) as
-                LocationManager
-        locmgr = getSystemService(LOCATION_SERVICE) as
-                LocationManager
-
-        var loc: Location? = null
-        try {
-            loc = locmgr.getLastKnownLocation(
-                LocationManager.GPS_PROVIDER)
-        } catch (e: SecurityException) {
-        }
-
-        if (loc != null) {
-            current_latitude = loc.latitude.toString()
-            current_longitude = loc.longitude.toString()
-            current_altitude = loc.altitude.toString()
-            showLocation()
-        } else {
-            Toast.makeText(this, "Can't get position", Toast.LENGTH_SHORT).show()
-        }
-        try {
-            locmgr.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                1000, 1f, this)
-        } catch (e: SecurityException) {
-        }
 
         val pref: SharedPreferences = this.getSharedPreferences(
             MainActivity.XMLFILE,
@@ -101,11 +78,11 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
 //                this.startActivity(intent_refresh)
                 Toast.makeText(this, "Treasure time is over", Toast.LENGTH_SHORT).show()
-                onDestroy()
-                //                var intent_refresh = Intent()
-//                intent_refresh.setClass(this, MainActivity::class.java)
-//                this.setResult(RESULT_OK,intent_refresh)
-//                finish()
+//                onDestroy()
+                var intent_refresh = Intent()
+                intent_refresh.setClass(this, MainActivity::class.java)
+                this.setResult(RESULT_OK,intent_refresh)
+                finish()
             }
             else {
                 handler.postDelayed(runnable, 500)
@@ -132,7 +109,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
         if ((grantResults.isNotEmpty() && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED)) {
-            initLoc()
+//            initLoc()
         }
     }
     private fun initLoc() {
@@ -144,6 +121,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             loc = locmgr.getLastKnownLocation(
                 LocationManager.GPS_PROVIDER)
         } catch (e: SecurityException) {
+            Log.w("eee1: ", "${e}")
         }
 
         if (loc != null) {
@@ -160,21 +138,24 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
                 LocationManager.GPS_PROVIDER,
                 1000, 1f, this)
         } catch (e: SecurityException) {
+            Log.w("eee2: ", "${e}")
         }
         var rand_x = Random.nextDouble(from=-0.003, until=0.003)
         var rand_y = Random.nextDouble(from=-0.003, until=0.003)
         Log.w("randx: ", "${rand_x}")
         Log.w("randy: ","${rand_y}")
-        treasure_latitude = current_latitude.toDouble() + rand_x
-        treasure_longitude = current_longitude.toDouble() + rand_y
+        MainActivity.treasure_position.latitude = current_latitude.toDouble() + rand_x
+        MainActivity.treasure_position.longitude = current_longitude.toDouble() + rand_y
         goal = Location("goal")
-        goal.setLatitude(treasure_latitude)
-        goal.setLongitude(treasure_longitude)
+        goal.setLatitude(MainActivity.treasure_position.latitude)
+        goal.setLongitude(MainActivity.treasure_position.longitude)
         if (loc != null) {
             current_distance = loc.distanceTo(goal).toString()
         }
+//        Log.w("treatureX: ","${treasure_latitude}")
+//        Log.w("treatureY: ","${treasure_longitude}")
         var textView_treasure = findViewById<TextView>(R.id.treasurePosition)
-        val str_treature = String.format("%.7f",treasure_latitude) + ", " + String.format("%.7f",treasure_longitude)
+        val str_treature = String.format("%.7f",MainActivity.treasure_position.latitude) + ", " + String.format("%.7f",MainActivity.treasure_position.longitude)
         textView_treasure.text = str_treature
     }
 

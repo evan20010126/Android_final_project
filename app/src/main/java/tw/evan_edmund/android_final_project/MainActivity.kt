@@ -27,6 +27,13 @@ class MainActivity : AppCompatActivity() {
     object refresh{
         var refresh = false
     }
+    object first{
+        var first_enter_treasure = true
+    }
+    object treasure_position{
+        var latitude:Double = 0.0
+        var longitude:Double = 0.0
+    }
     companion object {
         val XMLFILE: String = "GAME_DATA"
         val KEY_IDENTITY: String = "KEY_IDENTITY"
@@ -225,11 +232,21 @@ class MainActivity : AppCompatActivity() {
     }
     private fun treasureFunction(){
         if(treasureDicision.open) {
-//            intent.setClass(this@MainActivity, TreasureActivity::class.java)
+            if(first.first_enter_treasure){
+//                var intent_T = Intent()
+//                intent_T.setClass(this@MainActivity, TreasureActivity::class.java)
+//                this.startActivity(intent_T)
+                first.first_enter_treasure = false
+            }
+//            else{
+//                var intent_T = Intent()
+//                intent_T.setClass(this, TreasureActivity::class.java)
+//                this.setResult(RESULT_OK, intent_T)
+//                finish()
+//            }
             var intent_T = Intent()
-            intent_T.setClass(this, TreasureActivity::class.java)
-            this.setResult(RESULT_OK, intent_T)
-            finish()
+            intent_T.setClass(this@MainActivity, TreasureActivity::class.java)
+            this.startActivity(intent_T)
         }
         else{
             Toast.makeText(this, "Treasure is not ready", Toast.LENGTH_SHORT).show()
