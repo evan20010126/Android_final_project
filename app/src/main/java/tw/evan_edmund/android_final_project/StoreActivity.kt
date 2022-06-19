@@ -127,6 +127,7 @@ class StoreActivity : AppCompatActivity() {
         val pref_edit = pref.edit()
         pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood)
         pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
+        pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood)
         pref_edit.commit()
         hp_num.setText("${my_blood}/${my_maxblood}")
         point_num.setText(("${my_points}$"))
