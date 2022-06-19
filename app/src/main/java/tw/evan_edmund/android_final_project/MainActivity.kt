@@ -148,8 +148,10 @@ class MainActivity : AppCompatActivity() {
 
         if (my_identity == "General"){
             Identity_tv.setText(R.string.General)
+            VIP_check.is_vip = false
         }else if(my_identity == "VIP"){
             Identity_tv.setText(R.string.VIP)
+            VIP_check.is_vip = true
         }
         Points_tv.setText(my_points.toString())
         Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")

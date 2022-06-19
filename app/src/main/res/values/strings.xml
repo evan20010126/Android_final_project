@@ -8,6 +8,10 @@
     <string name="Fight">Fight</string>
     <string name="Store">Store</string>
 
+    <string name="Nyancat">Nyan cat</string>
+    <string name="Mouse">Bandit mouse</string>
+    <string name="Teacher">Lincyu</string>
+
     <!--    activity_vip-->
     <string name="upgrade_vip">Upgrade VIP</string>
     <string name="account">Credit Card Number:</string>
