@@ -8,6 +8,10 @@
     <string name="Fight">挑戰</string>
     <string name="Store">商店</string>
 
+    <string name="Nyancat">彩虹貓</string>
+    <string name="Mouse">土匪鼠</string>
+    <string name="Teacher">致宇老師</string>
+
     <!--    activity_vip-->
     <string name="upgrade_vip">升級VIP</string>
     <string name="account">請輸入卡號:</string>
