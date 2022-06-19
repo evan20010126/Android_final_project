@@ -68,11 +68,16 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             if(MainActivity.refresh.refresh == true){
                 var intent_refresh = Intent()
                 intent_refresh.setClass(this, MainActivity::class.java)
-                this.startActivity(intent_refresh)
+                this.setResult(RESULT_OK,intent_refresh)
+
+//                this.startActivity(intent_refresh)
                 Toast.makeText(this, "Treasure time is over", Toast.LENGTH_SHORT).show()
-                onDestroy()
+//                onDestroy()
+                finish()
             }
-            handler.postDelayed(runnable, 500)
+            else {
+                handler.postDelayed(runnable, 500)
+            }
         }
 
         handler.post(runnable)
@@ -163,6 +168,17 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         val str_current = String.format("%.7f",current_latitude.toDouble()) + ", " + String.format("%.7f",current_longitude.toDouble())
         textView_current.text = str_current
         textView_distance.text = "$current_distance m"
+        if(current_distance.toDouble() <= 50.0){
+            Toast.makeText(this, "Congratulation! You Earn 100 Points", Toast.LENGTH_SHORT).show()
+            val pref: SharedPreferences = this.getSharedPreferences(
+                MainActivity.XMLFILE,
+                AppCompatActivity.MODE_PRIVATE
+            )
+            val pref_edit = pref.edit()
+            var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000) + 100
+            pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
+            pref_edit.commit()
+        }
     }
     private fun navigation() {
 
