@@ -11,6 +11,7 @@
     <string name="Nyancat">Nyan cat</string>
     <string name="Mouse">Bandit mouse</string>
     <string name="Teacher">Lincyu</string>
+    <string name="Not_obtained">Not obtained</string>
 
     <!--    activity_vip-->
     <string name="upgrade_vip">Upgrade VIP</string>

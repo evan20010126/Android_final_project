@@ -2,6 +2,7 @@ package tw.evan_edmund.android_final_project
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ class MusicActivity : AppCompatActivity() {
     lateinit var btn_pause: Button
 
     var state = "stop"
+    var my_level = 0
 
     object current_select_music
     {
@@ -49,7 +51,7 @@ class MusicActivity : AppCompatActivity() {
 
         /*music player*/
         btn_start = findViewById(R.id.start)
-        btn_start.setOnClickListener { start() }
+        btn_start.setOnClickListener { start(my_level) }
         btn_stop = findViewById(R.id.stop)
         btn_stop.setOnClickListener { stop() }
         btn_pause = findViewById(R.id.pause)
@@ -63,6 +65,14 @@ class MusicActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        val pref: SharedPreferences = this.getSharedPreferences(
+            MainActivity.XMLFILE,
+            AppCompatActivity.MODE_PRIVATE
+        )
+
+        my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
+
 
     }
     override fun onDestroy() {
@@ -111,21 +121,27 @@ class MusicActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     /*music function*/
-    private fun start() {
-        MusicActivity.current_select_music.current_playing = MusicActivity.current_select_music.select_music
+    private fun start(level:Int) {
+        if (current_select_music.select_music < level){
+            MusicActivity.current_select_music.current_playing = MusicActivity.current_select_music.select_music
 
-        state = "start"
-        btn_pause.setEnabled(true);
-        btn_start.setEnabled(false);
-        btn_stop.setEnabled(true);
+            state = "start"
+            btn_pause.setEnabled(true);
+            btn_start.setEnabled(false);
+            btn_stop.setEnabled(true);
 
-        val intent = Intent()
-        intent.setClass(this, MusicService::class.java)
-        intent.putExtra("KEY_ISPAUSE", false);
-        startService(intent)
+            val intent = Intent()
+            intent.setClass(this, MusicService::class.java)
+            intent.putExtra("KEY_ISPAUSE", false);
+            startService(intent)
+        }else{
+            Toast.makeText(this,R.string.Not_obtained, Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun pause() {

@@ -65,6 +65,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="25sp"
                         android:layout_gravity="center"
+                        android:id="@+id/my_atk_tv"
                         android:text="ATK: 10" />
                 </LinearLayout>
                 <LinearLayout
@@ -78,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="25sp"
+                        android:id="@+id/boss_atk_tv"
                         android:text="ATK: 1000" />
                     <ImageView
                         android:id="@+id/boss_img"

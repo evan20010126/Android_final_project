@@ -11,6 +11,8 @@
     <string name="Nyancat">彩虹貓</string>
     <string name="Mouse">土匪鼠</string>
     <string name="Teacher">致宇老師</string>
+    <string name="Not_obtained">尚未取得</string>
+
 
     <!--    activity_vip-->
     <string name="upgrade_vip">升級VIP</string>
