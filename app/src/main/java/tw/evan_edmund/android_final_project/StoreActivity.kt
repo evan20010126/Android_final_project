@@ -199,11 +199,11 @@ class StoreActivity : AppCompatActivity() {
             return
         }
         my_points -= cost
-        if(my_weapon != 2){
+        if(my_weapon != 1){
             Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
-            my_weapon = 2
+            my_weapon = 1
         }
-        else if(my_weapon == 2){
+        else if(my_weapon == 1){
             Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
             my_weapon = -1
         }
