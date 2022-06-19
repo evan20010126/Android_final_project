@@ -53,6 +53,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var Points_tv: TextView
     lateinit var Hp_tv: TextView
 
+    lateinit var pref_edit: SharedPreferences.Editor
+    lateinit var pref: SharedPreferences
+
     /*UI repeat*/
     lateinit var cat_imgview: ImageView
     lateinit var hat_imgview: ImageView
@@ -88,6 +91,20 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Set Treasure time",
             Toast.LENGTH_SHORT).show();
 
+        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
+        pref = this.getSharedPreferences(
+            MainActivity.XMLFILE,
+            AppCompatActivity.MODE_PRIVATE
+        ) // android內部會用一個檔案XMLFILE.xml(用xml檔存)來儲存要儲存的data
+        // 第一個參數: xml的主檔名
+        // 以前有Context.MODE_WORLD_READABLE: 整個手機的其他app都可以讀但危險，所以之後沒得選只能選Context.MODE_PRIVATE
+
+        // sharepreference 為 key value的概念
+
+
+        pref_edit = pref.edit()
+        /**test remove all data**/ // will no storage last time data
+        pref_edit.clear().commit()
 
 
         var intent = Intent()
@@ -132,22 +149,30 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
-        val pref: SharedPreferences = this.getSharedPreferences(
-            MainActivity.XMLFILE,
-            AppCompatActivity.MODE_PRIVATE
-        ) // android內部會用一個檔案XMLFILE.xml(用xml檔存)來儲存要儲存的data
-        // 第一個參數: xml的主檔名
-        // 以前有Context.MODE_WORLD_READABLE: 整個手機的其他app都可以讀但危險，所以之後沒得選只能選Context.MODE_PRIVATE
+        var my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
+        var my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
+        var my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
+        var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
+        var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
+        var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
+        var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
 
-        // sharepreference 為 key value的概念
-        val my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
-        val my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
-        val my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
-        val my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
-        val my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
-        val my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
-        val my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
+        /** test version **/
+//        my_level = 3
+//        my_identity = "VIP"
+//        my_blood = 99999
+//        my_maxblood = 99999
+//        my_points = 99999999
+
+        pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
+        pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon)
+        pref_edit.putInt(MainActivity.KEY_HAT, my_hat)
+        pref_edit.putString(MainActivity.KEY_IDENTITY, my_identity)
+        pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood)
+        pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood)
+        pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
+        pref_edit.commit()
+
 
         if (my_weapon != -1) {
             weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
