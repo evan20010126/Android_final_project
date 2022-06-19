@@ -110,6 +110,11 @@ class FightingActivity : AppCompatActivity() {
             boss_blood_tv.setText("${boss_blood[my_level]}/${boss_max_blood[my_level]}")
             current_boss_blood = boss_max_blood[my_level]
             boss_atk_tv.setText("ATK: ${boss_atk[my_level]}")
+
+            if (current_boss_blood <= 0){
+                my_level += 1
+                pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
+            }
         }else{
             // game over!
         }
