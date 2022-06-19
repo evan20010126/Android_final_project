@@ -34,10 +34,13 @@ class FightingActivity : AppCompatActivity() {
     //user
     var user_atk_num = 1
     var user_defense = 1.0
+    var my_blood = 0
+    var my_maxblood = 0
 
     //boss
     var current_boss_blood = 0
     var my_level = 0
+
 
 
 
@@ -84,6 +87,24 @@ class FightingActivity : AppCompatActivity() {
             }
         }
 
+        your_img.setOnClickListener{
+            my_blood -= ((user_atk_num * 1).toDouble() * user_defense).toInt()
+            your_blood_tv.setText("${my_blood}/${my_maxblood}")
+            var pref_edit = pref.edit()
+            pref_edit.putInt(MainActivity.KEY_MAXBLOOD,my_blood)
+            pref_edit.commit()
+
+            if (my_blood <= 0){
+                Toast.makeText(this,
+                    "Not enough blood.", Toast.LENGTH_SHORT).show()
+
+                var intent = Intent()
+                intent.setClass(this, MainActivity::class.java)
+                setResult(RESULT_OK, intent);
+                finish()
+            }
+        }
+
     }
 
     override fun onStart() {
@@ -94,8 +115,8 @@ class FightingActivity : AppCompatActivity() {
         val my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
         val my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
         val my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
-        var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
-        val my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
+        my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
+        my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
         val my_points = pref.getInt(MainActivity.KEY_POINTS, 0)
 
         var pref_edit = pref.edit()
