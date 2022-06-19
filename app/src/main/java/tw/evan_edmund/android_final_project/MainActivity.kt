@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.*
 import androidx.core.graphics.scaleMatrix
 import androidx.core.view.isVisible
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,6 +60,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var Treasure_btn: Button
     lateinit var Fight_btn: Button
     lateinit var Store_btn: Button
+    lateinit var Op_btn:TextView
+    lateinit var Restart_btn:TextView
 
     /* TextView */
     lateinit var Identity_tv: TextView
@@ -87,6 +90,125 @@ class MainActivity : AppCompatActivity() {
         Treasure_btn = findViewById(R.id.Treasure_btn)
         Fight_btn = findViewById(R.id.Fight_btn)
         Store_btn = findViewById(R.id.Store_btn)
+        Op_btn = findViewById(R.id.OP_btn)
+        Restart_btn = findViewById(R.id.Restart_btn)
+
+        Op_btn.setOnClickListener{
+            pref_edit.putInt(MainActivity.KEY_LEVEL, 2)
+            pref_edit.putString(MainActivity.KEY_IDENTITY, "VIP")
+            pref_edit.putInt(MainActivity.KEY_BLOOD, 99999)
+            pref_edit.putInt(MainActivity.KEY_MAXBLOOD, 99999)
+            pref_edit.putInt(MainActivity.KEY_POINTS, 99999999)
+            pref_edit.commit()
+
+
+            var my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
+            var my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
+            var my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
+            var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
+            var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
+            var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
+            var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
+
+            var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
+            var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
+            var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
+            var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
+
+            if (my_weapon != -1) {
+                weapon_imgview.setVisibility(View.VISIBLE)
+                weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
+            }
+            else{
+                weapon_imgview.setVisibility(View.GONE)
+            }
+            if (my_hat != -1){
+                hat_imgview.setVisibility(View.VISIBLE)
+                hat_imgview.setImageResource(hat_id_arr[my_hat])
+            }
+            else{
+                hat_imgview.setVisibility(View.GONE)
+            }
+
+            if (my_identity == "General"){
+                Identity_tv.setText(R.string.General)
+                VIP_check.is_vip = false
+                VIP_btn.setEnabled(true)
+
+            }else if(my_identity == "VIP"){
+                Identity_tv.setText(R.string.VIP)
+                VIP_check.is_vip = true
+                VIP_btn.setEnabled(false)
+            }
+            Points_tv.setText(my_points.toString())
+            Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
+
+
+
+        }
+
+        Restart_btn.setOnClickListener{
+            pref_edit.clear().commit()
+
+            var my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
+            var my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
+            var my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
+            var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
+            var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
+            var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
+            var my_points = pref.getInt(MainActivity.KEY_POINTS, 100)
+
+            var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
+            var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
+            var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
+            var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
+
+            pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
+            pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon)
+            pref_edit.putInt(MainActivity.KEY_HAT, my_hat)
+            pref_edit.putString(MainActivity.KEY_IDENTITY, my_identity)
+            pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood)
+            pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood)
+            pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
+
+            pref_edit.putInt(MainActivity.KEY_HAS_HAT, has_hat)
+            pref_edit.putInt(MainActivity.KEY_HAS_AX, has_ax)
+            pref_edit.putInt(MainActivity.KEY_HAS_KNIFE, has_knife)
+            pref_edit.putInt(MainActivity.KEY_HAS_GUN, has_gun)
+
+            pref_edit.commit()
+
+
+            if (my_weapon != -1) {
+                weapon_imgview.setVisibility(View.VISIBLE)
+                weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
+            }
+            else{
+                weapon_imgview.setVisibility(View.GONE)
+            }
+            if (my_hat != -1){
+                hat_imgview.setVisibility(View.VISIBLE)
+                hat_imgview.setImageResource(hat_id_arr[my_hat])
+            }
+            else{
+                hat_imgview.setVisibility(View.GONE)
+            }
+
+            if (my_identity == "General"){
+                Identity_tv.setText(R.string.General)
+                VIP_check.is_vip = false
+                VIP_btn.setEnabled(true)
+
+            }else if(my_identity == "VIP"){
+                Identity_tv.setText(R.string.VIP)
+                VIP_check.is_vip = true
+                VIP_btn.setEnabled(false)
+            }
+            Points_tv.setText(my_points.toString())
+            Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
+
+        }
+
 
         Identity_tv = findViewById(R.id.Identity_tv)
         Points_tv = findViewById(R.id.Points_tv)
@@ -115,8 +237,7 @@ class MainActivity : AppCompatActivity() {
 
 
         pref_edit = pref.edit()
-        /**test remove all data**/ // will no storage last time data
-        pref_edit.clear().commit()
+
 
 
         var intent = Intent()
@@ -167,19 +288,12 @@ class MainActivity : AppCompatActivity() {
         var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
         var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
         var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
-        var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
+        var my_points = pref.getInt(MainActivity.KEY_POINTS, 100)
 
         var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
         var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
         var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
         var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
-
-        /** test version **/
-//        my_level = 2
-//        my_identity = "VIP"
-//        my_blood = 99999
-//        my_maxblood = 99999
-//        my_points = 99999999
 
         pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
         pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon)
@@ -224,27 +338,9 @@ class MainActivity : AppCompatActivity() {
         }
         Points_tv.setText(my_points.toString())
         Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
-
-        //        Identity_tv.setText(R.string.VIP)
-
-        // 取資料，第二個參數為default value(若是第一次執行 一開始根本沒有此xml檔 so根本沒有KEY_MONTH的key 會用default value)
-        //        etMonth?.setText(pref_month) // 把資料放在edittext上
-        //        val intDay = pref.getInt(KEY_DAY, 1);
-        //        etDay?.setText("" + intDay);
     }
     private fun treasureFunction(){
         if(treasureDicision.open) {
-            if(first.first_enter_treasure){
-//                var intent_T = Intent()
-//                intent_T.setClass(this@MainActivity, TreasureActivity::class.java)
-//                this.startActivity(intent_T)
-            }
-//            else{
-//                var intent_T = Intent()
-//                intent_T.setClass(this, TreasureActivity::class.java)
-//                this.setResult(RESULT_OK, intent_T)
-//                finish()
-//            }
             var intent_T = Intent()
             intent_T.setClass(this@MainActivity, TreasureActivity::class.java)
             this.startActivity(intent_T)

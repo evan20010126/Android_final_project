@@ -110,8 +110,22 @@
                 android:id="@+id/Store_btn">
             </Button>
         </LinearLayout>
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/Restart_btn"
+            android:text="OP"
+            android:gravity="left"
+            android:id="@+id/OP_btn">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/music_btn"
+            android:text="RE"
+            android:gravity="left"
+            android:id="@+id/Restart_btn">
+        </TextView>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
