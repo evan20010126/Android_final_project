@@ -1,5 +1,7 @@
 package tw.evan_edmund.android_final_project
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,14 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.core.graphics.scaleMatrix
 
 class MainActivity : AppCompatActivity() {
 
+    object treasureDicision{
+        var open: Boolean = false
+    }
+    object VIP_check{
+        var is_vip = false
+    }
     companion object {
         val XMLFILE: String = "GAME_DATA"
         val KEY_IDENTITY: String = "KEY_IDENTITY"
@@ -25,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         val KEY_HAT: String = "KEY_HAT"
         val KEY_WEAPON: String = "KEY_WEAPON"
         val KEY_LEVEL: String = "KEY_LEVEL"
-
     }
 
     /* Button */
@@ -47,6 +51,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var runnable: Runnable
     var index = 0
 
+    var pendingintent: PendingIntent? = null
+    var am: AlarmManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +72,13 @@ class MainActivity : AppCompatActivity() {
         hat_imgview = findViewById(R.id.hat_imgview)
         weapon_imgview = findViewById(R.id.weapon_imgview)
 
+        pendingintent = Util.setPendingIntent(this@MainActivity)
+        am = getSystemService(Context.ALARM_SERVICE) as?
+                AlarmManager?
+        Util.setNextAlarm(this, am, pendingintent)
+        Toast.makeText(this, "Set Treasure time",
+            Toast.LENGTH_SHORT).show();
+
 
 
         var intent = Intent()
@@ -78,8 +91,7 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
         Treasure_btn.setOnClickListener{
-            intent.setClass(this@MainActivity, TreasureActivity::class.java)
-            this.startActivity(intent)
+            treasureFunction()
         }
         Fight_btn.setOnClickListener{
             intent.setClass(this@MainActivity, FightingActivity::class.java)
@@ -149,7 +161,15 @@ class MainActivity : AppCompatActivity() {
         //        val intDay = pref.getInt(KEY_DAY, 1);
         //        etDay?.setText("" + intDay);
     }
-
+    private fun treasureFunction(){
+        if(treasureDicision.open) {
+            intent.setClass(this@MainActivity, TreasureActivity::class.java)
+            this.startActivity(intent)
+        }
+        else{
+            Toast.makeText(this, "Treasure is not ready", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
 
 val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
