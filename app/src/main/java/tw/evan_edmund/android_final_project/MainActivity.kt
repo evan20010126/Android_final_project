@@ -166,11 +166,11 @@ class MainActivity : AppCompatActivity() {
         var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
 
         /** test version **/
-        my_level = 2
-        my_identity = "VIP"
-        my_blood = 99999
-        my_maxblood = 99999
-        my_points = 99999999
+//        my_level = 2
+//        my_identity = "VIP"
+//        my_blood = 99999
+//        my_maxblood = 99999
+//        my_points = 99999999
 
         pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
         pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon)

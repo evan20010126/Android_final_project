@@ -29,6 +29,7 @@ class FightingActivity : AppCompatActivity() {
 
     lateinit var pref: SharedPreferences
     lateinit var runnable: Runnable
+    lateinit var handler: Handler
     var index = 0
 
     //user
@@ -160,7 +161,7 @@ class FightingActivity : AppCompatActivity() {
 
 
         /*boss fight you*/
-        var handler = Handler(Looper.getMainLooper())
+        handler = Handler(Looper.getMainLooper())
 
         runnable = Runnable{
             if((my_blood <= 0) or (current_boss_blood <= 0)){
@@ -184,6 +185,11 @@ class FightingActivity : AppCompatActivity() {
         }
         handler.post(runnable)
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacks(runnable)
     }
 
     val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
