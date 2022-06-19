@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         // 以前有Context.MODE_WORLD_READABLE: 整個手機的其他app都可以讀但危險，所以之後沒得選只能選Context.MODE_PRIVATE
 
         // sharepreference 為 key value的概念
-        val my_level = pref.getInt(MainActivity.KEY_LEVEL, 1)
+        val my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
         val my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
         val my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
         val my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
@@ -128,8 +128,10 @@ class MainActivity : AppCompatActivity() {
         val my_points = pref.getInt(MainActivity.KEY_POINTS, 0)
 
         if (my_weapon != -1) {
-            hat_imgview.setImageResource(hat_id_arr[my_hat])
             weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
+        }
+        if (my_hat != -1){
+            hat_imgview.setImageResource(hat_id_arr[my_hat])
         }
 
         if (my_identity == "General"){

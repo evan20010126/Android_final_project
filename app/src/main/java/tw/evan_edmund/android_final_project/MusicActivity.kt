@@ -16,8 +16,8 @@ class MusicActivity : AppCompatActivity() {
 
         val albumlist = ArrayList<AlbumItem>()
 
-        albumlist.add(AlbumItem("Music1", R.drawable.modifyax))
-        albumlist.add(AlbumItem("Music2", R.drawable.modifygun))
+        albumlist.add(AlbumItem("Music1", R.drawable.modifymeow))
+        albumlist.add(AlbumItem("Music2", R.drawable.modifyteacher))
         albumlist.add(AlbumItem("Music3", R.drawable.modifyhat))
         albumlist.add(AlbumItem("Music4", R.drawable.modifycat_run1))
         albumlist.add(AlbumItem("Music5", R.drawable.modifycat_run2))
@@ -34,8 +34,8 @@ class MusicActivity : AppCompatActivity() {
     }
     private fun itemClicked(position: Int){
         when (position){
-            0->imgView.setImageResource(R.drawable.modifyax)
-            1-> imgView.setImageResource(R.drawable.modifygun)
+            0->imgView.setImageResource(R.drawable.modifymeow)
+            1-> imgView.setImageResource(R.drawable.modifyteacher)
             2-> imgView.setImageResource(R.drawable.modifyhat)
             3->imgView.setImageResource(R.drawable.modifycat_run1)
             4->imgView.setImageResource(R.drawable.modifycat_run2)
