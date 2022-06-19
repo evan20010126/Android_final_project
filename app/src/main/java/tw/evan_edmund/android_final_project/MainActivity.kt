@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     object treasure_position{
         var latitude:Double = 0.0
         var longitude:Double = 0.0
+        var rand_x:Double = 0.0
+        var rand_y:Double = 0.0
     }
     companion object {
         val XMLFILE: String = "GAME_DATA"
@@ -236,7 +238,6 @@ class MainActivity : AppCompatActivity() {
 //                var intent_T = Intent()
 //                intent_T.setClass(this@MainActivity, TreasureActivity::class.java)
 //                this.startActivity(intent_T)
-                first.first_enter_treasure = false
             }
 //            else{
 //                var intent_T = Intent()
