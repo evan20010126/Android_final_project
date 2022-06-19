@@ -64,7 +64,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp"
-                        android:text=" " />
+                        android:layout_gravity="center"
+                        android:text="ATK: 10" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -72,18 +73,18 @@
                     android:layout_weight="1"
                     android:gravity="bottom"
                     android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:text="ATK: 1000" />
                     <ImageView
                         android:id="@+id/boss_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
                         />
-                    <TextView
-                        android:id="@+id/boss_blood"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="25sp" />
                 </LinearLayout>
             </TableRow>
             <TableRow>
@@ -125,7 +126,9 @@
                         android:id="@+id/your_blood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="25sp"/>
+                        android:textSize="25sp"
+                        android:layout_gravity="center"
+                        />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -133,6 +136,13 @@
                     android:layout_weight="1"
                     android:gravity="bottom"
                     android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/boss_blood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:text="1000/1000"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -140,12 +150,6 @@
                         android:adjustViewBounds="true"
                         android:scaleType="fitEnd"
                         android:src="@drawable/modifywhite" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="25sp"
-                        android:text=" " />
                 </LinearLayout>
             </TableRow>
 
