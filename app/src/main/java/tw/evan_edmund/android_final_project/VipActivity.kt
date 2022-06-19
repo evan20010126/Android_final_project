@@ -61,7 +61,7 @@ class VipActivity : AppCompatActivity() {
             Toast.makeText(this, "Invalid input(Valid date)", Toast.LENGTH_SHORT).show()
         }
         else{
-            if(current_month<input[0].toInt() && current_year<input[1].toInt()){
+            if((current_month>input[0].toInt()&&current_year==input[1].toInt()) || current_year<input[1].toInt()){
                 date_correct = true
             }
             else{
