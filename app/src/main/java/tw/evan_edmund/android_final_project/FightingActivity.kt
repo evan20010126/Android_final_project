@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.preference.Preference
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,6 +27,7 @@ class FightingActivity : AppCompatActivity() {
     lateinit var your_hat: ImageView
     lateinit var boss_img: ImageView
 
+    lateinit var pref: SharedPreferences
     lateinit var runnable: Runnable
     var index = 0
 
@@ -38,9 +40,16 @@ class FightingActivity : AppCompatActivity() {
     var my_level = 0
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fighting)
+
+        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
+        pref = this.getSharedPreferences(
+            MainActivity.XMLFILE,
+            AppCompatActivity.MODE_PRIVATE
+        )
 
         level_tv = findViewById(R.id.level_num)
         your_blood_tv = findViewById(R.id.your_blood)
@@ -57,6 +66,22 @@ class FightingActivity : AppCompatActivity() {
         boss_img.setOnClickListener{
             current_boss_blood -= user_atk_num * 1
             boss_blood_tv.setText("${current_boss_blood}/${boss_max_blood[my_level]}")
+            if (current_boss_blood <= 0){
+                var pref_edit = pref.edit()
+                my_level += 1
+                pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
+                pref_edit.commit()
+
+                Toast.makeText(this,
+                    "You're winner!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    "You obtained the boss's song.", Toast.LENGTH_SHORT).show()
+
+                var intent = Intent()
+                intent.setClass(this, MainActivity::class.java)
+                setResult(RESULT_OK, intent);
+                finish()
+            }
         }
 
     }
@@ -65,11 +90,6 @@ class FightingActivity : AppCompatActivity() {
         // 初始話數值
         super.onStart()
 
-        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
-        val pref: SharedPreferences = this.getSharedPreferences(
-            MainActivity.XMLFILE,
-            AppCompatActivity.MODE_PRIVATE
-        )
         my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
         val my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
         val my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
@@ -111,10 +131,6 @@ class FightingActivity : AppCompatActivity() {
             current_boss_blood = boss_max_blood[my_level]
             boss_atk_tv.setText("ATK: ${boss_atk[my_level]}")
 
-            if (current_boss_blood <= 0){
-                my_level += 1
-                pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
-            }
         }else{
             // game over!
         }

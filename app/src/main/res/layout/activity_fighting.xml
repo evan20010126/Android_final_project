@@ -113,16 +113,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="22dp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitEnd"
-                            android:src="@drawable/modifyax" />
+                            android:scaleType="fitEnd" />
                         <ImageView
                             android:id="@+id/your_hat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="22dp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitEnd"
-                            android:src="@drawable/modifyhat" />
+                            android:scaleType="fitEnd" />
                     </RelativeLayout>
                     <TextView
                         android:id="@+id/your_blood"
