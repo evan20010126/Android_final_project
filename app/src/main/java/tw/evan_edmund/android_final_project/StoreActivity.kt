@@ -140,7 +140,7 @@ class StoreActivity : AppCompatActivity() {
             return
         }
         my_points -= cost
-        if(my_hat == 0) {
+        if(my_hat != -1) {
             Toast.makeText(this, "Take off the hat!", Toast.LENGTH_SHORT).show()
             my_hat = -1
         }

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.*
 import androidx.core.graphics.scaleMatrix
 
@@ -178,8 +179,11 @@ class MainActivity : AppCompatActivity() {
     }
     private fun treasureFunction(){
         if(treasureDicision.open) {
-            intent.setClass(this@MainActivity, TreasureActivity::class.java)
-            this.startActivity(intent)
+//            intent.setClass(this@MainActivity, TreasureActivity::class.java)
+            var intent_T = Intent()
+            intent_T.setClass(this, TreasureActivity::class.java)
+            this.setResult(RESULT_OK, intent_T)
+            finish()
         }
         else{
             Toast.makeText(this, "Treasure is not ready", Toast.LENGTH_SHORT).show()

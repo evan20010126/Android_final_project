@@ -25,7 +25,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     var current_latitude: String = ""
     var current_longitude: String = ""
     var current_altitude: String = ""
-    var current_distance: String = ""
+    var current_distance: String = "99999999"
     var my_identity: String = ""
     lateinit var goal: Location
     var treasure_latitude: Double = 0.0
@@ -35,6 +35,9 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.w("hihi","hihi")
+
         setContentView(R.layout.activity_treasure)
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -57,6 +60,34 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
     override fun onStart() {
         super.onStart()
+
+        locmgr = getSystemService(LOCATION_SERVICE) as
+                LocationManager
+        locmgr = getSystemService(LOCATION_SERVICE) as
+                LocationManager
+
+        var loc: Location? = null
+        try {
+            loc = locmgr.getLastKnownLocation(
+                LocationManager.GPS_PROVIDER)
+        } catch (e: SecurityException) {
+        }
+
+        if (loc != null) {
+            current_latitude = loc.latitude.toString()
+            current_longitude = loc.longitude.toString()
+            current_altitude = loc.altitude.toString()
+            showLocation()
+        } else {
+            Toast.makeText(this, "Can't get position", Toast.LENGTH_SHORT).show()
+        }
+        try {
+            locmgr.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                1000, 1f, this)
+        } catch (e: SecurityException) {
+        }
+
         val pref: SharedPreferences = this.getSharedPreferences(
             MainActivity.XMLFILE,
             AppCompatActivity.MODE_PRIVATE
@@ -66,14 +97,15 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
         runnable = Runnable{
             if(MainActivity.refresh.refresh == true){
-                var intent_refresh = Intent()
-                intent_refresh.setClass(this, MainActivity::class.java)
-                this.setResult(RESULT_OK,intent_refresh)
+
 
 //                this.startActivity(intent_refresh)
                 Toast.makeText(this, "Treasure time is over", Toast.LENGTH_SHORT).show()
-//                onDestroy()
-                finish()
+                onDestroy()
+                //                var intent_refresh = Intent()
+//                intent_refresh.setClass(this, MainActivity::class.java)
+//                this.setResult(RESULT_OK,intent_refresh)
+//                finish()
             }
             else {
                 handler.postDelayed(runnable, 500)
@@ -167,7 +199,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         var textView_distance = findViewById<TextView>(R.id.distance)
         val str_current = String.format("%.7f",current_latitude.toDouble()) + ", " + String.format("%.7f",current_longitude.toDouble())
         textView_current.text = str_current
-        textView_distance.text = "$current_distance m"
+        textView_distance.text = "${current_distance} m"
         if(current_distance.toDouble() <= 50.0){
             Toast.makeText(this, "Congratulation! You Earn 100 Points", Toast.LENGTH_SHORT).show()
             val pref: SharedPreferences = this.getSharedPreferences(
@@ -178,7 +210,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000) + 100
             pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
             pref_edit.commit()
-            
+
             var intent = Intent()
             intent.setClass(this, MainActivity::class.java)
             setResult(RESULT_OK, intent);
