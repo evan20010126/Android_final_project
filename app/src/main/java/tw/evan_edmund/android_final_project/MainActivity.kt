@@ -1,5 +1,6 @@
 package tw.evan_edmund.android_final_project
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -119,6 +120,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
 
@@ -149,9 +151,12 @@ class MainActivity : AppCompatActivity() {
         if (my_identity == "General"){
             Identity_tv.setText(R.string.General)
             VIP_check.is_vip = false
+            VIP_btn.setEnabled(true)
+
         }else if(my_identity == "VIP"){
             Identity_tv.setText(R.string.VIP)
             VIP_check.is_vip = true
+            VIP_btn.setEnabled(false)
         }
         Points_tv.setText(my_points.toString())
         Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")

@@ -1,5 +1,6 @@
 package tw.evan_edmund.android_final_project
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -71,6 +72,15 @@ class VipActivity : AppCompatActivity() {
         if(acc_correct && pass_correct && date_correct){
             Toast.makeText(this, "Congratulation! \nYou are VIP now", Toast.LENGTH_SHORT).show()
             MainActivity.VIP_check.is_vip = true
+
+            val pref: SharedPreferences = this.getSharedPreferences(
+                MainActivity.XMLFILE,
+                AppCompatActivity.MODE_PRIVATE
+            )
+            val pref_edit = pref.edit()
+            pref_edit.putString(MainActivity.KEY_IDENTITY, "VIP")
+            pref_edit.commit()
+
             intent.setClass(this, MainActivity::class.java)
             this.startActivity(intent)
         }
