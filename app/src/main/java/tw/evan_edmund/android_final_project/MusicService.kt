@@ -16,7 +16,7 @@ class MusicService : Service() {
 //    }
 
     companion object {
-        val CHANNEL_ID = "evan_edmund.musicplayer"
+        val CHANNEL_ID = "evanedmund.musicplayer"
         val NOTIFICATION_ID = 1
     }
 
@@ -30,18 +30,18 @@ class MusicService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-
         // 建立 mediaplayer物件
         player = MediaPlayer()
 
         val uri: Uri = Uri.parse("android.resource://" +
-                getPackageName() + "/raw/dontdownloadthissong")
+                getPackageName() + "/raw/${music_filenames[MusicActivity.current_select_music.select_music]}")
 
         player?.setDataSource(this, uri);
         player?.setOnCompletionListener {
             try {
                 player?.stop()
                 player?.prepare()
+                player?.start()
             } catch (e: Exception) {
             }
         }
@@ -82,7 +82,7 @@ class MusicService : Service() {
             }
         } else {
             try {
-                player.start();
+                player.start()
             } catch (e: Exception) {
             }
         }
@@ -154,3 +154,4 @@ class MusicService : Service() {
         return notification
     }
 }
+val music_filenames = arrayOf("nyancat","mouseburger")
