@@ -17,6 +17,11 @@ class MusicActivity : AppCompatActivity() {
     lateinit var btn_stop: Button
     lateinit var btn_pause: Button
 
+    object current_select_music
+    {
+        var select_music: Int = -1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music)
@@ -49,9 +54,20 @@ class MusicActivity : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        btn_pause.setEnabled(false);
+        btn_start.setEnabled(false);
+        btn_stop.setEnabled(false);
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        stop()
+    }
+
     private fun itemClicked(position: Int){
         when (position){
-            0->imgView.setImageResource(R.drawable.modifymeow)
+            0-> imgView.setImageResource(R.drawable.modifymeow)
             1-> imgView.setImageResource(R.drawable.modifyteacher)
             2-> imgView.setImageResource(R.drawable.modifymouse)
             3->imgView.setImageResource(R.drawable.modifycat_run1)
@@ -60,10 +76,16 @@ class MusicActivity : AppCompatActivity() {
                 imgView.setImageResource(R.drawable.modifyax)
             }
         }
+        btn_pause.setEnabled(true);
+        btn_start.setEnabled(true);
+        btn_stop.setEnabled(true);
+
+        current_select_music.select_music = position
     }
 
     /*music function*/
     private fun start() {
+
         val intent = Intent()
         intent.setClass(this, MusicService::class.java)
         intent.putExtra("KEY_ISPAUSE", false);
