@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src = "@drawable/cola">
+                        android:src = "@drawable/modifymacdowdow">
                     </ImageView>
                     <Button
                         android:id="@+id/buybread"
@@ -120,7 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src = "@drawable/modifyhat">
+                        android:src = "@drawable/store_hat">
                     </ImageView>
                     <Button
                         android:id="@+id/buyhat"
@@ -160,7 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src = "@drawable/modifyax">
+                        android:src = "@drawable/modifyknife">
                     </ImageView>
                     <Button
                         android:id="@+id/buyknife"

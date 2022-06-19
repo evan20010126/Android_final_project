@@ -238,5 +238,5 @@ class MainActivity : AppCompatActivity() {
 }
 
 val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
-val weapon_id_arr = intArrayOf(R.drawable.modifyax,R.drawable.modifyax, R.drawable.modifygun)
+val weapon_id_arr = intArrayOf(R.drawable.modifyax,R.drawable.modifyknife, R.drawable.modifygun)
 val hat_id_arr = intArrayOf(R.drawable.modifyhat,)
