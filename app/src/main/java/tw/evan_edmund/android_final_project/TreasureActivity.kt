@@ -178,6 +178,11 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000) + 100
             pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
             pref_edit.commit()
+            
+            var intent = Intent()
+            intent.setClass(this, MainActivity::class.java)
+            setResult(RESULT_OK, intent);
+            finish()
         }
     }
     private fun navigation() {
