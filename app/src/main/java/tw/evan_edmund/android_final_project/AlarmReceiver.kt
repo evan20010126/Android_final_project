@@ -30,6 +30,7 @@ class AlarmReceiver : BroadcastReceiver() {
             Toast.makeText(context,"Set The Next Treasure Time",Toast.LENGTH_LONG
             ).show()
             MainActivity.treasureDicision.open = false
+            MainActivity.refresh.refresh = true
         }
         else{
             val am = context.getSystemService(Context.ALARM_SERVICE) as?
@@ -43,6 +44,7 @@ class AlarmReceiver : BroadcastReceiver() {
             var msg = "Go Find Your Treasure!!!"
             Util.sendNotification(context, msg!!)
             MainActivity.treasureDicision.open = true
+            MainActivity.refresh.refresh = false
         }
     }
 }

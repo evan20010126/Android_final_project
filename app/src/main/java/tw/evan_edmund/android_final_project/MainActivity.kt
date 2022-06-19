@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
     object VIP_check{
         var is_vip = false
     }
+    object refresh{
+        var refresh = false
+    }
     companion object {
         val XMLFILE: String = "GAME_DATA"
         val KEY_IDENTITY: String = "KEY_IDENTITY"

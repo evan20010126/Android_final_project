@@ -2,6 +2,7 @@ package tw.evan_edmund.android_final_project
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -9,6 +10,9 @@ import android.location.LocationManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -22,10 +26,11 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     var current_longitude: String = ""
     var current_altitude: String = ""
     var current_distance: String = ""
+    var my_identity: String = ""
     lateinit var goal: Location
     var treasure_latitude: Double = 0.0
     var treasure_longitude: Double = 0.0
-
+    lateinit var runnable: Runnable
     lateinit var nav_btn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +54,31 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         }
         initLoc()
     }
+
+    override fun onStart() {
+        super.onStart()
+        val pref: SharedPreferences = this.getSharedPreferences(
+            MainActivity.XMLFILE,
+            AppCompatActivity.MODE_PRIVATE
+        )
+        my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General").toString()
+        var handler = Handler(Looper.getMainLooper())
+
+        runnable = Runnable{
+            if(MainActivity.refresh.refresh == true){
+                var intent_refresh = Intent()
+                intent_refresh.setClass(this, MainActivity::class.java)
+                this.startActivity(intent_refresh)
+                Toast.makeText(this, "Treasure time is over", Toast.LENGTH_SHORT).show()
+                onDestroy()
+            }
+            handler.postDelayed(runnable, 500)
+        }
+
+        handler.post(runnable)
+    }
     private fun checkVIP(){
-        if(MainActivity.VIP_check.is_vip){
+        if(my_identity=="VIP"){
             navigation()
         }
         else{
@@ -98,6 +126,8 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         }
         var rand_x = Random.nextDouble(from=-0.003, until=0.003)
         var rand_y = Random.nextDouble(from=-0.003, until=0.003)
+        Log.w("randx: ", "${rand_x}")
+        Log.w("randy: ","${rand_y}")
         treasure_latitude = current_latitude.toDouble() + rand_x
         treasure_longitude = current_longitude.toDouble() + rand_y
         goal = Location("goal")

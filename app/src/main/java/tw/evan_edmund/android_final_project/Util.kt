@@ -56,8 +56,14 @@ class Util{
                     AlarmManager.RTC_WAKEUP,
                     c.timeInMillis, pi)
             }
+            var msg = ""
+            if(c.get(Calendar.MINUTE) < 10){
+                msg = "Next Treasure Time-> " + c.get(Calendar.HOUR_OF_DAY) + " : 0" + c.get(Calendar.MINUTE)
+            }
+            else{
+                msg = "Next Treasure Time-> " + c.get(Calendar.HOUR_OF_DAY) + " : " + c.get(Calendar.MINUTE)
+            }
 
-            var msg = "Next Treasure Time-> " + c.get(Calendar.HOUR_OF_DAY) + " : " + c.get(Calendar.MINUTE)+ " "
 
             sendNotification(context, msg!!)
         }
