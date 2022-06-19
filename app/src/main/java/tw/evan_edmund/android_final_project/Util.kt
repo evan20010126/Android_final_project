@@ -57,7 +57,7 @@ class Util{
                     c.timeInMillis, pi)
             }
 
-            var msg = "Treasure Time-> " + c.get(Calendar.HOUR_OF_DAY) + " : " + c.get(Calendar.MINUTE)+ " "
+            var msg = "Next Treasure Time-> " + c.get(Calendar.HOUR_OF_DAY) + " : " + c.get(Calendar.MINUTE)+ " "
 
             sendNotification(context, msg!!)
         }
