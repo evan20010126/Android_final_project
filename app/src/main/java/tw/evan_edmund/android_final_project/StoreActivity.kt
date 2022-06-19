@@ -168,10 +168,16 @@ class StoreActivity : AppCompatActivity() {
             Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
             return
         }
-        Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
+
         my_points -= cost
-        if(my_weapon != 0)
+        if(my_weapon != 0){
+            Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
             my_weapon = 0
+        }
+        else if(my_weapon == 0){
+            Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
+            my_weapon = -1
+        }
         val pref: SharedPreferences = this.getSharedPreferences(
             MainActivity.XMLFILE,
             AppCompatActivity.MODE_PRIVATE
@@ -192,10 +198,15 @@ class StoreActivity : AppCompatActivity() {
             Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
             return
         }
-        Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
         my_points -= cost
-        if(my_weapon != 2)
+        if(my_weapon != 2){
+            Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
             my_weapon = 2
+        }
+        else if(my_weapon == 2){
+            Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
+            my_weapon = -1
+        }
         val pref: SharedPreferences = this.getSharedPreferences(
             MainActivity.XMLFILE,
             AppCompatActivity.MODE_PRIVATE
@@ -215,10 +226,15 @@ class StoreActivity : AppCompatActivity() {
             Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
             return
         }
-        Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
         my_points -= cost
-        if(my_weapon != 1)
-            my_weapon = 1
+        if(my_weapon != 2){
+            Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
+            my_weapon = 2
+        }
+        else if(my_weapon == 2){
+            Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
+            my_weapon = -1
+        }
         val pref: SharedPreferences = this.getSharedPreferences(
             MainActivity.XMLFILE,
             AppCompatActivity.MODE_PRIVATE
