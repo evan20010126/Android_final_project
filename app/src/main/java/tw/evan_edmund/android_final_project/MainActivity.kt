@@ -11,8 +11,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.core.graphics.scaleMatrix
+import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
 
@@ -158,6 +160,11 @@ class MainActivity : AppCompatActivity() {
         var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
         var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
 
+        var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
+        var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
+        var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
+        var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
+
         /** test version **/
 //        my_level = 3
 //        my_identity = "VIP"
@@ -172,14 +179,28 @@ class MainActivity : AppCompatActivity() {
         pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood)
         pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood)
         pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
+
+        pref_edit.putInt(MainActivity.KEY_HAS_HAT, has_hat)
+        pref_edit.putInt(MainActivity.KEY_HAS_AX, has_ax)
+        pref_edit.putInt(MainActivity.KEY_HAS_KNIFE, has_knife)
+        pref_edit.putInt(MainActivity.KEY_HAS_GUN, has_gun)
+
         pref_edit.commit()
 
 
         if (my_weapon != -1) {
+            weapon_imgview.setVisibility(View.VISIBLE)
             weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
         }
+        else{
+            weapon_imgview.setVisibility(View.GONE)
+        }
         if (my_hat != -1){
+            hat_imgview.setVisibility(View.VISIBLE)
             hat_imgview.setImageResource(hat_id_arr[my_hat])
+        }
+        else{
+            hat_imgview.setVisibility(View.GONE)
         }
 
         if (my_identity == "General"){
