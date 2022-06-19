@@ -61,7 +61,7 @@ class FightingActivity : AppCompatActivity() {
 
         your_blood_tv.setText("${my_blood}/${my_maxblood}")
 
-        boss_img.setImageResource(R.drawable.modifyteacher)
+        boss_img.setImageResource(R.drawable.modifymouse)
     }
 
     val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
