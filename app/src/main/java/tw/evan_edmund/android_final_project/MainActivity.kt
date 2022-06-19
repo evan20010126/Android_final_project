@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         val KEY_HAT: String = "KEY_HAT"
         val KEY_WEAPON: String = "KEY_WEAPON"
         val KEY_LEVEL: String = "KEY_LEVEL"
+
+        val KEY_HAS_AX: String = "KEY_HAS_AX"
+        val KEY_HAS_KNIFE: String = "KEY_HAS_KNIFE"
+        val KEY_HAS_GUN: String = "KEY_HAS_GUN"
+        val KEY_HAS_HAT: String = "KEY_HAS_HAT"
     }
 
     /* Button */
@@ -142,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         val my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
         val my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
         val my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
-        val my_points = pref.getInt(MainActivity.KEY_POINTS, 0)
+        val my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
 
         if (my_weapon != -1) {
             weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
@@ -183,5 +188,5 @@ class MainActivity : AppCompatActivity() {
 }
 
 val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
-val weapon_id_arr = intArrayOf(R.drawable.modifyax, R.drawable.modifygun)
+val weapon_id_arr = intArrayOf(R.drawable.modifyax,R.drawable.modifyax, R.drawable.modifygun)
 val hat_id_arr = intArrayOf(R.drawable.modifyhat,)

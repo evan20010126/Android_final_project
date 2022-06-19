@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src = "@drawable/modifygun">
+                        android:src = "@drawable/cola">
                     </ImageView>
                     <Button
                         android:id="@+id/buycola"
@@ -105,7 +105,7 @@
                         android:id="@+id/buybread"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30$">
+                        android:text="80$">
                     </Button>
                 </LinearLayout>
             </TableRow>
@@ -126,7 +126,7 @@
                         android:id="@+id/buyhat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30$">
+                        android:text="100$">
                     </Button>
                 </LinearLayout>
                 <LinearLayout
@@ -145,7 +145,7 @@
                         android:id="@+id/buyax"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30$">
+                        android:text="200$">
                     </Button>
                 </LinearLayout>
             </TableRow>
@@ -163,10 +163,10 @@
                         android:src = "@drawable/modifyax">
                     </ImageView>
                     <Button
-                        android:id="@+id/buyKnife"
+                        android:id="@+id/buyknife"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30$">
+                        android:text="300$">
                     </Button>
                 </LinearLayout>
                 <LinearLayout
@@ -185,7 +185,7 @@
                         android:id="@+id/buygun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30$">
+                        android:text="500$">
                     </Button>
                 </LinearLayout>
             </TableRow>
