@@ -124,8 +124,8 @@ class FightingActivity : AppCompatActivity() {
 
         your_blood_tv.setText("${my_blood}/${my_maxblood}")
 
-        if(my_level < 3){
-            // 三個魔王
+        if(my_level < boss_id_arr.size){
+            // 當 level
             boss_img.setImageResource(boss_id_arr[my_level])
             boss_blood_tv.setText("${boss_blood[my_level]}/${boss_max_blood[my_level]}")
             current_boss_blood = boss_max_blood[my_level]
@@ -166,7 +166,7 @@ class FightingActivity : AppCompatActivity() {
     }
 
     val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
-    val weapon_id_arr = intArrayOf(R.drawable.modifyax, R.drawable.modifygun)
+    val weapon_id_arr = intArrayOf(R.drawable.modifyax,R.drawable.modifyknife, R.drawable.modifygun)
     val hat_id_arr = intArrayOf(R.drawable.modifyhat,)
     val boss_id_arr =  intArrayOf(R.drawable.modifymeow,R.drawable.modifymouse,R.drawable.modifyteacher)
     val boss_max_blood = intArrayOf(50, 2000, 50000)

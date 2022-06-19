@@ -82,7 +82,9 @@ class VipActivity : AppCompatActivity() {
             pref_edit.commit()
 
             intent.setClass(this, MainActivity::class.java)
-            this.startActivity(intent)
+//            this.startActivity(intent)
+                setResult(RESULT_OK, intent);
+                finish()
         }
     }
 }
