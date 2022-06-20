@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         Restart_btn = findViewById(R.id.Restart_btn)
 
         Op_btn.setOnClickListener{
-            pref_edit.putInt(MainActivity.KEY_LEVEL, 2)
+            pref_edit.putInt(MainActivity.KEY_LEVEL, 3)
             pref_edit.putString(MainActivity.KEY_IDENTITY, "VIP")
             pref_edit.putInt(MainActivity.KEY_BLOOD, 99999)
             pref_edit.putInt(MainActivity.KEY_MAXBLOOD, 99999)
