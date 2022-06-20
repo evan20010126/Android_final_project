@@ -30,7 +30,7 @@
     <string name="distanceTo">距離寶藏:</string>
     <string name="navigation">Navigaion</string>
     <string name="string_to_vip">升級VIP即可開啟導航功能</string>
-
+    <string name="Navigation_btn">導航</string>
     <string name="hp">HP: </string>
 
     <string name="stop">停止</string>
