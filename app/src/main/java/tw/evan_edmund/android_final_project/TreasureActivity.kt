@@ -215,7 +215,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("http://maps.google.com/maps?" +
                 "saddr=${current_latitude},${current_longitude}&" +
-                "daddr=${treasure_latitude},${treasure_longitude}")
+                "daddr=${MainActivity.treasure_position.latitude},${MainActivity.treasure_position.longitude}")
         startActivity(intent)
     }
     override fun onProviderEnabled(provider: String) {

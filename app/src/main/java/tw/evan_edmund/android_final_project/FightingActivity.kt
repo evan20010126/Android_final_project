@@ -118,12 +118,12 @@ class FightingActivity : AppCompatActivity() {
         user_atk_tv.setText("ATK: ${user_atk_num}")
         user_blood_tv.setText("${my_blood}/${my_maxblood}")
 
+        /*init boss information*/
         if(my_level < boss_id_arr.size){
             boss_img_view.setImageResource(boss_id_arr[my_level])
             boss_blood_tv.setText("${boss_blood[my_level]}/${boss_max_blood[my_level]}")
-            current_boss_blood = boss_max_blood[my_level]
             boss_atk_tv.setText("ATK: ${boss_atk[my_level]}")
-
+            current_boss_blood = boss_max_blood[my_level]
         }else{
             // boss 都挑戰完了
             boss_img_view.setImageResource(R.drawable.modifywhite)
@@ -134,7 +134,6 @@ class FightingActivity : AppCompatActivity() {
         boss_hit_user()
 
     }
-
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(runnable)
@@ -160,9 +159,8 @@ class FightingActivity : AppCompatActivity() {
     fun user_hit_user(){
         my_blood -= ((user_atk_num * 1).toDouble() * user_defense).toInt()
         user_blood_tv.setText("${my_blood}/${my_maxblood}")
-        pref_edit.putInt(MainActivity.KEY_MAXBLOOD,my_blood)
+        pref_edit.putInt(MainActivity.KEY_BLOOD,my_blood)
         pref_edit.commit()
-
         if (my_blood <= 0){
             Toast.makeText(this,
                 "Not enough blood.", Toast.LENGTH_SHORT).show()
