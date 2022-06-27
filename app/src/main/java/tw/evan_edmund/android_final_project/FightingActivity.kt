@@ -34,8 +34,6 @@ class FightingActivity : AppCompatActivity() {
     lateinit var handler: Handler
     /*----*/
 
-    var index = 0
-
     //user
     var user_atk_num = 1
     var user_defense = 1.0
