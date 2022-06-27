@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -134,7 +135,8 @@ class MainActivity : AppCompatActivity() {
 
         val getIntent = intent
         var isFromNotification = getIntent.getIntExtra("FROMNOTIFICATION", 0)
-        if(treasureDicision.pop_out_of_window == false && isFromNotification != 1){
+        Log.w("notification", "->${isFromNotification}")
+        if(treasureDicision.pop_out_of_window == false && isFromNotification == 0){
             pendingintent = Util.setPendingIntent(this@MainActivity)
             am = getSystemService(Context.ALARM_SERVICE) as?
                     AlarmManager?

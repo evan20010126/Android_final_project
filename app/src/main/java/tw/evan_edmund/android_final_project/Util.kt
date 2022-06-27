@@ -75,7 +75,7 @@ class Util{
             intent.setClass(context, MainActivity::class.java)
             intent.putExtra("FROMNOTIFICATION", 1)
             val pi = PendingIntent.getActivity(context,
-                0, intent, PendingIntent.FLAG_IMMUTABLE)
+                0, intent, PendingIntent.FLAG_MUTABLE)
             var notification: Notification? = null
             try {
                 notification = getNotification(context, pi,
