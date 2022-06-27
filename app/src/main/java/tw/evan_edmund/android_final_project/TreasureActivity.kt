@@ -25,7 +25,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     var current_latitude: String = ""
     var current_longitude: String = ""
     var current_altitude: String = ""
-    var current_distance: String = "99999999"
+    var current_distance: String = "Loading..."
     var my_identity: String = ""
     lateinit var goal: Location
     var treasure_latitude: Double = 0.0
@@ -33,11 +33,11 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     lateinit var runnable: Runnable
     lateinit var nav_btn : Button
 
-    lateinit var textView_distance: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        textView_distance = findViewById(R.id.distance)
+
         Log.w("hihi","hihi")
 
         setContentView(R.layout.activity_treasure)
@@ -63,7 +63,6 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     override fun onStart() {
         super.onStart()
 
-        textView_distance = findViewById(R.id.distance)
         initLoc()
 
         Log.w("onstarthihi","onstarthihi2")
@@ -117,7 +116,6 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         }
     }
     private fun initLoc() {
-        textView_distance.text = "Sorry, can't get your position yet!"
         locmgr = getSystemService(LOCATION_SERVICE) as
                 LocationManager
 
@@ -136,7 +134,6 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             current_altitude = loc.altitude.toString()
             showLocation()
         } else {
-            textView_distance.text = "Sorry, can't get your position yet!"
             Toast.makeText(this, "Can't get position", Toast.LENGTH_SHORT).show()
             return
         }
@@ -188,9 +185,13 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     }
     private fun showLocation(){
         var textView_current = findViewById<TextView>(R.id.currentPosition)
-
+        var textView_distance = findViewById<TextView>(R.id.distance)
         val str_current = String.format("%.7f",current_latitude.toDouble()) + ", " + String.format("%.7f",current_longitude.toDouble())
         textView_current.text = str_current
+        if(current_distance=="Loading..."){
+            textView_distance.text = "Loading..."
+            return
+        }
         textView_distance.text = "${current_distance} m"
         if(current_distance.toDouble() <= 50.0){
             Toast.makeText(this, "Congratulation! You Earn 100 Points", Toast.LENGTH_SHORT).show()
