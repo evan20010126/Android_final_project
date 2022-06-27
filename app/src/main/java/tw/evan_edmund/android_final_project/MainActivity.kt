@@ -19,6 +19,7 @@ import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
+    /*shared variable(for all activity)--Start*/
     object treasureDicision{
         var open: Boolean = false
         var pop_out_of_window = false
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         var rand_x:Double = 0.0
         var rand_y:Double = 0.0
     }
+
+    // Database key's string
     companion object {
         val XMLFILE: String = "GAME_DATA"
         val KEY_IDENTITY: String = "KEY_IDENTITY"
@@ -54,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         val KEY_HAS_GUN: String = "KEY_HAS_GUN"
         val KEY_HAS_HAT: String = "KEY_HAS_HAT"
     }
+    /*shared variable(for all activity)--End*/
 
     /* Button */
     lateinit var VIP_btn: Button
