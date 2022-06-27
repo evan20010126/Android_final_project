@@ -196,7 +196,7 @@ class FightingActivity : AppCompatActivity() {
     val weapon_id_arr = intArrayOf(R.drawable.modifyax,R.drawable.modifyknife, R.drawable.modifygun)
     val hat_id_arr = intArrayOf(R.drawable.modifyhat,)
     val boss_id_arr =  intArrayOf(R.drawable.modifymeow,R.drawable.modifymouse,R.drawable.modifyteacher)
-    val boss_max_blood = intArrayOf(50, 2000, 50000)
-    val boss_blood = intArrayOf(50, 2000, 50000)
-    val boss_atk = intArrayOf(10, 30, 100)
+    val boss_max_blood = intArrayOf(50, 1000, 5000)
+    val boss_blood = intArrayOf(50, 1000, 5000)
+    val boss_atk = intArrayOf(1, 5, 10)
 }

@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     object treasureDicision{
         var open: Boolean = false
+        var pop_out_of_window = false
     }
     object VIP_check{
         var is_vip = false
@@ -218,12 +219,17 @@ class MainActivity : AppCompatActivity() {
         hat_imgview = findViewById(R.id.hat_imgview)
         weapon_imgview = findViewById(R.id.weapon_imgview)
 
-        pendingintent = Util.setPendingIntent(this@MainActivity)
-        am = getSystemService(Context.ALARM_SERVICE) as?
-                AlarmManager?
-        Util.setNextAlarm(this, am, pendingintent)
-        Toast.makeText(this, "Set Treasure time",
-            Toast.LENGTH_SHORT).show();
+        if(treasureDicision.pop_out_of_window == false){
+            pendingintent = Util.setPendingIntent(this@MainActivity)
+            am = getSystemService(Context.ALARM_SERVICE) as?
+                    AlarmManager?
+            Util.setNextAlarm(this, am, pendingintent)
+            Toast.makeText(this, "Set Treasure time",
+                Toast.LENGTH_SHORT).show();
+        }else{
+            treasureDicision.pop_out_of_window = false
+        }
+
 
         // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
         pref = this.getSharedPreferences(
@@ -348,6 +354,11 @@ class MainActivity : AppCompatActivity() {
         else{
             Toast.makeText(this, "Treasure is not ready", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        treasureDicision.pop_out_of_window = true
     }
 }
 
