@@ -36,4 +36,6 @@
     <string name="stop">STOP</string>
     <string name="start">start</string>
     <string name="pause">Pause</string>
+
+    <string name="loading">loading...</string>
 </resources>

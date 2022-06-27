@@ -189,7 +189,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         val str_current = String.format("%.7f",current_latitude.toDouble()) + ", " + String.format("%.7f",current_longitude.toDouble())
         textView_current.text = str_current
         if(current_distance=="Loading..."){
-            textView_distance.text = "Loading..."
+            textView_distance.setText(R.string.loading)
             return
         }
         textView_distance.text = "${current_distance} m"
