@@ -39,7 +39,7 @@ class Util{
 
             var c: Calendar = Calendar.getInstance()
             c.setTimeInMillis(System.currentTimeMillis())
-            c.add(Calendar.MINUTE,10)
+            c.add(Calendar.MINUTE,1)
             c.set(Calendar.SECOND, 0)
             if (Build.VERSION.SDK_INT >= 31) {
                 if (am?.canScheduleExactAlarms() == true) {

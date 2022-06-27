@@ -33,11 +33,11 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     lateinit var runnable: Runnable
     lateinit var nav_btn : Button
 
-
+    lateinit var textView_distance: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        textView_distance = findViewById(R.id.distance)
         Log.w("hihi","hihi")
 
         setContentView(R.layout.activity_treasure)
@@ -51,17 +51,21 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
                     Manifest.permission.ACCESS_FINE_LOCATION),
                 1)
         } else {
-            initLoc()
+//            initLoc()
         }
         nav_btn = findViewById(R.id.nav_btn)
         nav_btn.setOnClickListener{
             checkVIP()
         }
-        initLoc()
+//        initLoc()
     }
 
     override fun onStart() {
         super.onStart()
+
+        textView_distance = findViewById(R.id.distance)
+        initLoc()
+
         Log.w("onstarthihi","onstarthihi2")
 
 
@@ -113,11 +117,13 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         }
     }
     private fun initLoc() {
+        textView_distance.text = "Sorry, can't get your position yet!"
         locmgr = getSystemService(LOCATION_SERVICE) as
                 LocationManager
 
         var loc: Location? = null
         try {
+
             loc = locmgr.getLastKnownLocation(
                 LocationManager.GPS_PROVIDER)
         } catch (e: SecurityException) {
@@ -130,7 +136,9 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             current_altitude = loc.altitude.toString()
             showLocation()
         } else {
+            textView_distance.text = "Sorry, can't get your position yet!"
             Toast.makeText(this, "Can't get position", Toast.LENGTH_SHORT).show()
+            return
         }
 
         try {
@@ -180,7 +188,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
     }
     private fun showLocation(){
         var textView_current = findViewById<TextView>(R.id.currentPosition)
-        var textView_distance = findViewById<TextView>(R.id.distance)
+
         val str_current = String.format("%.7f",current_latitude.toDouble()) + ", " + String.format("%.7f",current_longitude.toDouble())
         textView_current.text = str_current
         textView_distance.text = "${current_distance} m"
@@ -214,5 +222,6 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
     override fun onProviderDisabled(provider: String) {
     }
+
 }
 
