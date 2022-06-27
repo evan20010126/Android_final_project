@@ -194,6 +194,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         }
         textView_distance.text = "${current_distance} m"
         if(current_distance.toDouble() <= 50.0){
+            MainActivity.treasureDicision.find = true
             Toast.makeText(this, R.string.earn_100, Toast.LENGTH_SHORT).show()
             val pref: SharedPreferences = this.getSharedPreferences(
                 MainActivity.XMLFILE,

@@ -53,4 +53,5 @@
     <string name="no_position">Can\'t get position</string>
     <string name="change_position">Location has changed</string>
     <string name="earn_100">Congratulation! You Earn 100 Points</string>
+    <string name="find">You had already found the Treasure!</string>
 </resources>

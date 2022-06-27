@@ -54,5 +54,6 @@
     <string name="no_position">無法取得位置!</string>
     <string name="change_position">位置已改變!</string>
     <string name="earn_100">恭喜!您已獲得100金幣</string>
+    <string name="find">您已找到寶藏!</string>
 
 </resources>

@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     object treasureDicision{
         var open: Boolean = false
         var pop_out_of_window = false
+        var find = false
     }
     object VIP_check{
         var is_vip = false
@@ -221,6 +222,10 @@ class MainActivity : AppCompatActivity() {
         Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
     }
     private fun treasureFunction(){
+        if(treasureDicision.find){
+            Toast.makeText(this, R.string.find, Toast.LENGTH_SHORT).show()
+            return
+        }
         if(treasureDicision.open) {
             var intent_T = Intent()
             intent_T.setClass(this@MainActivity, TreasureActivity::class.java)
@@ -229,6 +234,7 @@ class MainActivity : AppCompatActivity() {
         else{
             Toast.makeText(this, R.string.treasure_not_ready, Toast.LENGTH_SHORT).show()
         }
+
     }
 
     override fun onStop() {
