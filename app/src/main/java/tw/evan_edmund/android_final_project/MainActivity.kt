@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
             am = getSystemService(Context.ALARM_SERVICE) as?
                     AlarmManager?
             Util.setNextAlarm(this, am, pendingintent)
-            Toast.makeText(this, "Set Treasure time",
+            Toast.makeText(this, R.string.set_treasure,
                 Toast.LENGTH_SHORT).show();
         }else{
             treasureDicision.pop_out_of_window = false
@@ -227,7 +227,7 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent_T)
         }
         else{
-            Toast.makeText(this, "Treasure is not ready", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.treasure_not_ready, Toast.LENGTH_SHORT).show()
         }
     }
 

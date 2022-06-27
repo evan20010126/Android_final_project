@@ -80,7 +80,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
 
 
 //                this.startActivity(intent_refresh)
-                Toast.makeText(this, "Treasure time is over", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.treasure_over, Toast.LENGTH_SHORT).show()
 //                onDestroy()
                 var intent_refresh = Intent()
                 intent_refresh.setClass(this, MainActivity::class.java)
@@ -99,7 +99,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             navigation()
         }
         else{
-            Toast.makeText(this, "Sorry, you're not VIP", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.not_vip, Toast.LENGTH_SHORT).show()
         }
     }
     override fun onRequestPermissionsResult(
@@ -134,7 +134,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             current_altitude = loc.altitude.toString()
             showLocation()
         } else {
-            Toast.makeText(this, "Can't get position", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_position, Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -180,7 +180,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         current_altitude = loc.altitude.toString()
         showLocation()
         Toast.makeText(
-            this, "Location has changed", Toast.LENGTH_SHORT
+            this, R.string.change_position, Toast.LENGTH_SHORT
         ).show()
     }
     private fun showLocation(){
@@ -194,7 +194,7 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
         }
         textView_distance.text = "${current_distance} m"
         if(current_distance.toDouble() <= 50.0){
-            Toast.makeText(this, "Congratulation! You Earn 100 Points", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.earn_100, Toast.LENGTH_SHORT).show()
             val pref: SharedPreferences = this.getSharedPreferences(
                 MainActivity.XMLFILE,
                 AppCompatActivity.MODE_PRIVATE

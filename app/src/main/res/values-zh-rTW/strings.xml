@@ -38,4 +38,21 @@
     <string name="pause">暫停</string>
 
     <string name="loading">載入中...</string>
+    <string name="set_treasure">已設定尋寶時間!</string>
+    <string name="treasure_not_ready">未到尋寶時間!</string>
+    <string name="treasure_over">尋寶時間已結束!</string>
+    <string name="next_treasure">已設定下次尋寶時間!</string>
+    <string name="treasure_time">開始尋寶!!!</string>
+    <string name="no_money">金幣不足</string>
+    <string name="HP_full">HP值已滿</string>
+    <string name="take_off_hat">脫下帽子!</string>
+    <string name="wear_hat">戴上帽子!</string>
+    <string name="change_weapon">已更換武器!</string>
+    <string name="no_weapon">已卸下武器!</string>
+
+    <string name="not_vip">您尚未升級VIP</string>
+    <string name="no_position">無法取得位置!</string>
+    <string name="change_position">位置已改變!</string>
+    <string name="earn_100">恭喜!您已獲得100金幣</string>
+
 </resources>

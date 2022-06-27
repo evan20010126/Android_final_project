@@ -90,11 +90,11 @@ class StoreActivity : AppCompatActivity() {
         var s = cola_btn.getText().toString().subSequence(0,cola_btn.getText().length-1)
         var cost = s.toString().toInt()
         if(my_points<cost){
-            Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_money, Toast.LENGTH_SHORT).show()
             return
         }
         if(my_blood>=my_maxblood){
-            Toast.makeText(this, "Your HP is Full", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.HP_full, Toast.LENGTH_SHORT).show()
             return
         }
 //        Log.w("cost: ", "${cost}")
@@ -115,7 +115,7 @@ class StoreActivity : AppCompatActivity() {
         var s = bread_btn.getText().toString().subSequence(0,bread_btn.getText().length-1)
         var cost = s.toString().toInt()
         if(my_points<cost){
-            Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_money, Toast.LENGTH_SHORT).show()
             return
         }
         my_maxblood += 50
@@ -136,16 +136,16 @@ class StoreActivity : AppCompatActivity() {
         var s = hat_btn.getText().toString().subSequence(0,hat_btn.getText().length-1)
         var cost = s.toString().toInt()
         if(my_points<cost){
-            Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_money, Toast.LENGTH_SHORT).show()
             return
         }
         my_points -= cost
         if(my_hat != -1) {
-            Toast.makeText(this, "Take off the hat!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.take_off_hat, Toast.LENGTH_SHORT).show()
             my_hat = -1
         }
         else if(my_hat == -1) {
-            Toast.makeText(this, "Wear the hat!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.wear_hat, Toast.LENGTH_SHORT).show()
             my_hat = 0
         }
         val pref: SharedPreferences = this.getSharedPreferences(
@@ -165,17 +165,17 @@ class StoreActivity : AppCompatActivity() {
         var s = ax_btn.getText().toString().subSequence(0,ax_btn.getText().length-1)
         var cost = s.toString().toInt()
         if(my_points<cost){
-            Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_money, Toast.LENGTH_SHORT).show()
             return
         }
 
         my_points -= cost
         if(my_weapon != 0){
-            Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.change_weapon, Toast.LENGTH_SHORT).show()
             my_weapon = 0
         }
         else if(my_weapon == 0){
-            Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_weapon, Toast.LENGTH_SHORT).show()
             my_weapon = -1
         }
         val pref: SharedPreferences = this.getSharedPreferences(
@@ -195,16 +195,16 @@ class StoreActivity : AppCompatActivity() {
         var s = ax_btn.getText().toString().subSequence(0,ax_btn.getText().length-1)
         var cost = s.toString().toInt()
         if(my_points<cost){
-            Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_money, Toast.LENGTH_SHORT).show()
             return
         }
         my_points -= cost
         if(my_weapon != 1){
-            Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.change_weapon, Toast.LENGTH_SHORT).show()
             my_weapon = 1
         }
         else if(my_weapon == 1){
-            Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_weapon, Toast.LENGTH_SHORT).show()
             my_weapon = -1
         }
         val pref: SharedPreferences = this.getSharedPreferences(
@@ -223,16 +223,16 @@ class StoreActivity : AppCompatActivity() {
         var s = gun_btn.getText().toString().subSequence(0,gun_btn.getText().length-1)
         var cost = s.toString().toInt()
         if(my_points<cost){
-            Toast.makeText(this, "You don't have enough money", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_money, Toast.LENGTH_SHORT).show()
             return
         }
         my_points -= cost
         if(my_weapon != 2){
-            Toast.makeText(this, "Change the weapon!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.change_weapon, Toast.LENGTH_SHORT).show()
             my_weapon = 2
         }
         else if(my_weapon == 2){
-            Toast.makeText(this, "You don't have weapon now!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.no_weapon, Toast.LENGTH_SHORT).show()
             my_weapon = -1
         }
         val pref: SharedPreferences = this.getSharedPreferences(

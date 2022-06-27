@@ -38,4 +38,19 @@
     <string name="pause">Pause</string>
 
     <string name="loading">loading...</string>
+    <string name="set_treasure">Set Treasure Time!</string>
+    <string name="treasure_not_ready">Treasure is not ready!</string>
+    <string name="treasure_over">Treasure time is over!</string>
+    <string name="next_treasure">Set The Next Treasure Time!</string>
+    <string name="treasure_time">Treasure Time!!!</string>
+    <string name="no_money">You don\'t have enough points!</string>
+    <string name="HP_full">Your HP is Full</string>
+    <string name="take_off_hat">Take off the hat!</string>
+    <string name="wear_hat">Wear the hat!</string>
+    <string name="change_weapon">Change the weapon!</string>
+    <string name="no_weapon">You don\'t have weapon now!</string>
+    <string name="not_vip">Sorry, you\'re not VIP</string>
+    <string name="no_position">Can\'t get position</string>
+    <string name="change_position">Location has changed</string>
+    <string name="earn_100">Congratulation! You Earn 100 Points</string>
 </resources>

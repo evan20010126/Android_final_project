@@ -27,7 +27,7 @@ class AlarmReceiver : BroadcastReceiver() {
                     AlarmManager
             val pi = Util.setPendingIntent(context)
             Util.setNextAlarm(context, am, pi, )
-            Toast.makeText(context,"Set The Next Treasure Time",Toast.LENGTH_LONG
+            Toast.makeText(context,R.string.next_treasure,Toast.LENGTH_LONG
             ).show()
             MainActivity.treasureDicision.open = false
             MainActivity.refresh.refresh = true
@@ -39,7 +39,7 @@ class AlarmReceiver : BroadcastReceiver() {
             val pi = Util.setPendingIntent(context)
             Util.setNextAlarm(context, am, pi, )
             Toast.makeText(
-                context, "Treasure Time!!!",
+                context, R.string.treasure_time,
                 Toast.LENGTH_LONG
             ).show()
             var msg = "Go Find Your Treasure!!!"
