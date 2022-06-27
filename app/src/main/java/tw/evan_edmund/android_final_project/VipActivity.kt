@@ -43,34 +43,34 @@ class VipActivity : AppCompatActivity() {
             acc_correct = true
         }
         else{
-            Toast.makeText(this, "Invalid Credit Card Number", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.invalid_credit_card_number, Toast.LENGTH_SHORT).show()
         }
         if(password == "1234"){
             pass_correct = true
         }
         else{
-            Toast.makeText(this, "Invalid Verification Code", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.invalid_verification_code, Toast.LENGTH_SHORT).show()
         }
         val input = valid_date.split("/").toTypedArray()
         if(input.size != 2){
-            Toast.makeText(this, "Wrong input format(Valid date)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.wrong_input_format, Toast.LENGTH_SHORT).show()
         }
         else if(input[0].toInt()<0 || input[0].toInt()>12){
-            Toast.makeText(this, "Invalid input(Valid date)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.invalid_input, Toast.LENGTH_SHORT).show()
         }
         else if(input[1].toInt()<1000 || input[1].toInt()>9999){
-            Toast.makeText(this, "Invalid input(Valid date)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.invalid_input, Toast.LENGTH_SHORT).show()
         }
         else{
             if((current_month>input[0].toInt()&&current_year==input[1].toInt()) || current_year<input[1].toInt()){
                 date_correct = true
             }
             else{
-                Toast.makeText(this, "Expired Credit Card", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.expired_credit_card, Toast.LENGTH_SHORT).show()
             }
         }
         if(acc_correct && pass_correct && date_correct){
-            Toast.makeText(this, "Congratulation! \nYou are VIP now", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.congratulation, Toast.LENGTH_SHORT).show()
             MainActivity.VIP_check.is_vip = true
 
             val pref: SharedPreferences = this.getSharedPreferences(

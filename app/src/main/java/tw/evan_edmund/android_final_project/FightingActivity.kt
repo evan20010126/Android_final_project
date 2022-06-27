@@ -70,7 +70,6 @@ class FightingActivity : AppCompatActivity() {
         user_weapon_img_view = findViewById(R.id.your_weapon)
         user_hat_img_view = findViewById(R.id.your_hat)
 
-
         boss_img_view.setOnClickListener{
             user_hit_boss()
         }
@@ -146,9 +145,9 @@ class FightingActivity : AppCompatActivity() {
             pref_edit.commit()
 
             Toast.makeText(this,
-                "You're winner!", Toast.LENGTH_SHORT).show()
+                R.string.win, Toast.LENGTH_SHORT).show()
             Toast.makeText(this,
-                "You obtained the boss's song.", Toast.LENGTH_SHORT).show()
+                R.string.getSong, Toast.LENGTH_SHORT).show()
 
             return_mainactivity()
         }
@@ -161,7 +160,7 @@ class FightingActivity : AppCompatActivity() {
         pref_edit.commit()
         if (my_blood <= 0){
             Toast.makeText(this,
-                "Not enough blood.", Toast.LENGTH_SHORT).show()
+                R.string.loss, Toast.LENGTH_SHORT).show()
 
             return_mainactivity()
         }
@@ -174,7 +173,7 @@ class FightingActivity : AppCompatActivity() {
             if((my_blood <= 0) or (current_boss_blood <= 0)){
                 if (my_blood <= 0){
                     Toast.makeText(this,
-                        "Not enough blood.", Toast.LENGTH_SHORT).show()
+                        R.string.loss, Toast.LENGTH_SHORT).show()
                     return_mainactivity()
                 }
                 handler.removeCallbacks(runnable) //stops a specific runnable

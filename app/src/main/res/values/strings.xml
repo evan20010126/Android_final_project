@@ -38,6 +38,7 @@
     <string name="pause">Pause</string>
 
     <string name="loading">loading...</string>
+
     <string name="set_treasure">Set Treasure Time!</string>
     <string name="treasure_not_ready">Treasure is not ready!</string>
     <string name="treasure_over">Treasure time is over!</string>
@@ -54,4 +55,16 @@
     <string name="change_position">Location has changed</string>
     <string name="earn_100">Congratulation! You Earn 100 Points</string>
     <string name="find">You had already found the Treasure!</string>
+
+    <string name="win">You\'re winner!</string>
+    <string name="getSong">You obtained the boss\'s song.</string>
+    <string name="loss">Not enough blood.</string>
+
+    <string name="invalid_credit_card_number">Invalid Credit Card Number</string>
+    <string name="invalid_verification_code">Invalid Verification Code</string>
+    <string name="wrong_input_format">Wrong input format(Valid date)</string>
+    <string name="invalid_input">Invalid input(Valid date)</string>
+    <string name="expired_credit_card">Expired Credit Card</string>
+    <string name="congratulation">Congratulation! \nYou are VIP now</string>
+
 </resources>
