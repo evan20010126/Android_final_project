@@ -86,6 +86,19 @@ class MainActivity : AppCompatActivity() {
     var pendingintent: PendingIntent? = null
     var am: AlarmManager? = null
 
+    var my_level: Int ? = null
+    var my_weapon: Int ? = null
+    var my_hat: Int ? = null
+    var my_identity: String ? = null
+    var my_blood: Int ? = null
+    var my_maxblood: Int ? = null
+    var my_points: Int ? = null
+
+    var has_hat: Int ? = null
+    var has_ax: Int ? = null
+    var has_knife: Int ? = null
+    var has_gun: Int ? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -97,131 +110,31 @@ class MainActivity : AppCompatActivity() {
         Store_btn = findViewById(R.id.Store_btn)
         Op_btn = findViewById(R.id.OP_btn)
         Restart_btn = findViewById(R.id.Restart_btn)
-
-        Op_btn.setOnClickListener{
-            pref_edit.putInt(MainActivity.KEY_LEVEL, 3)
-            pref_edit.putString(MainActivity.KEY_IDENTITY, "VIP")
-            pref_edit.putInt(MainActivity.KEY_BLOOD, 99999)
-            pref_edit.putInt(MainActivity.KEY_MAXBLOOD, 99999)
-            pref_edit.putInt(MainActivity.KEY_POINTS, 99999999)
-            pref_edit.commit()
-
-
-            var my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
-            var my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
-            var my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
-            var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
-            var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
-            var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
-            var my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
-
-            var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
-            var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
-            var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
-            var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
-
-            if (my_weapon != -1) {
-                weapon_imgview.setVisibility(View.VISIBLE)
-                weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
-            }
-            else{
-                weapon_imgview.setVisibility(View.GONE)
-            }
-            if (my_hat != -1){
-                hat_imgview.setVisibility(View.VISIBLE)
-                hat_imgview.setImageResource(hat_id_arr[my_hat])
-            }
-            else{
-                hat_imgview.setVisibility(View.GONE)
-            }
-
-            if (my_identity == "General"){
-                Identity_tv.setText(R.string.General)
-                VIP_check.is_vip = false
-                VIP_btn.setEnabled(true)
-
-            }else if(my_identity == "VIP"){
-                Identity_tv.setText(R.string.VIP)
-                VIP_check.is_vip = true
-                VIP_btn.setEnabled(false)
-            }
-            Points_tv.setText(my_points.toString())
-            Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
-
-
-
-        }
-
-        Restart_btn.setOnClickListener{
-            pref_edit.clear().commit()
-
-            var my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
-            var my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
-            var my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
-            var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
-            var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
-            var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
-            var my_points = pref.getInt(MainActivity.KEY_POINTS, 100)
-
-            var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
-            var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
-            var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
-            var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
-
-            pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
-            pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon)
-            pref_edit.putInt(MainActivity.KEY_HAT, my_hat)
-            pref_edit.putString(MainActivity.KEY_IDENTITY, my_identity)
-            pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood)
-            pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood)
-            pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
-
-            pref_edit.putInt(MainActivity.KEY_HAS_HAT, has_hat)
-            pref_edit.putInt(MainActivity.KEY_HAS_AX, has_ax)
-            pref_edit.putInt(MainActivity.KEY_HAS_KNIFE, has_knife)
-            pref_edit.putInt(MainActivity.KEY_HAS_GUN, has_gun)
-
-            pref_edit.commit()
-
-
-            if (my_weapon != -1) {
-                weapon_imgview.setVisibility(View.VISIBLE)
-                weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
-            }
-            else{
-                weapon_imgview.setVisibility(View.GONE)
-            }
-            if (my_hat != -1){
-                hat_imgview.setVisibility(View.VISIBLE)
-                hat_imgview.setImageResource(hat_id_arr[my_hat])
-            }
-            else{
-                hat_imgview.setVisibility(View.GONE)
-            }
-
-            if (my_identity == "General"){
-                Identity_tv.setText(R.string.General)
-                VIP_check.is_vip = false
-                VIP_btn.setEnabled(true)
-
-            }else if(my_identity == "VIP"){
-                Identity_tv.setText(R.string.VIP)
-                VIP_check.is_vip = true
-                VIP_btn.setEnabled(false)
-            }
-            Points_tv.setText(my_points.toString())
-            Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
-
-        }
-
-
         Identity_tv = findViewById(R.id.Identity_tv)
         Points_tv = findViewById(R.id.Points_tv)
         Hp_tv = findViewById(R.id.hp)
-
         cat_imgview = findViewById(R.id.cat_imgview)
         hat_imgview = findViewById(R.id.hat_imgview)
         weapon_imgview = findViewById(R.id.weapon_imgview)
+
+        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
+        pref = this.getSharedPreferences(
+            MainActivity.XMLFILE,
+            AppCompatActivity.MODE_PRIVATE
+        ) // android內部會用一個檔案XMLFILE.xml(用xml檔存)來儲存要儲存的data
+        // 第一個參數: xml的主檔名
+        // 以前有Context.MODE_WORLD_READABLE: 整個手機的其他app都可以讀但危險，所以之後沒得選只能選Context.MODE_PRIVATE
+
+        // sharepreference 為 key value的概念
+        pref_edit = pref.edit()
+
+        Op_btn.setOnClickListener{
+            clickOpButton()
+        }
+
+        Restart_btn.setOnClickListener{
+            clickRestartButton()
+        }
 
         if(treasureDicision.pop_out_of_window == false){
             pendingintent = Util.setPendingIntent(this@MainActivity)
@@ -233,22 +146,6 @@ class MainActivity : AppCompatActivity() {
         }else{
             treasureDicision.pop_out_of_window = false
         }
-
-
-        // context 類別內有 getSharedPreferences，可取得SharedPreferences的物件
-        pref = this.getSharedPreferences(
-            MainActivity.XMLFILE,
-            AppCompatActivity.MODE_PRIVATE
-        ) // android內部會用一個檔案XMLFILE.xml(用xml檔存)來儲存要儲存的data
-        // 第一個參數: xml的主檔名
-        // 以前有Context.MODE_WORLD_READABLE: 整個手機的其他app都可以讀但危險，所以之後沒得選只能選Context.MODE_PRIVATE
-
-        // sharepreference 為 key value的概念
-
-
-        pref_edit = pref.edit()
-
-
 
         var intent = Intent()
         VIP_btn.setOnClickListener{
@@ -292,45 +189,19 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        var my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
-        var my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
-        var my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
-        var my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
-        var my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
-        var my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
-        var my_points = pref.getInt(MainActivity.KEY_POINTS, 100)
-
-        var has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
-        var has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
-        var has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
-        var has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
-
-        pref_edit.putInt(MainActivity.KEY_LEVEL, my_level)
-        pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon)
-        pref_edit.putInt(MainActivity.KEY_HAT, my_hat)
-        pref_edit.putString(MainActivity.KEY_IDENTITY, my_identity)
-        pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood)
-        pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood)
-        pref_edit.putInt(MainActivity.KEY_POINTS, my_points)
-
-        pref_edit.putInt(MainActivity.KEY_HAS_HAT, has_hat)
-        pref_edit.putInt(MainActivity.KEY_HAS_AX, has_ax)
-        pref_edit.putInt(MainActivity.KEY_HAS_KNIFE, has_knife)
-        pref_edit.putInt(MainActivity.KEY_HAS_GUN, has_gun)
-
-        pref_edit.commit()
-
+        getData()
+        setData()
 
         if (my_weapon != -1) {
             weapon_imgview.setVisibility(View.VISIBLE)
-            weapon_imgview.setImageResource(weapon_id_arr[my_weapon])
+            weapon_imgview.setImageResource(weapon_id_arr[my_weapon!!])
         }
         else{
             weapon_imgview.setVisibility(View.GONE)
         }
         if (my_hat != -1){
             hat_imgview.setVisibility(View.VISIBLE)
-            hat_imgview.setImageResource(hat_id_arr[my_hat])
+            hat_imgview.setImageResource(hat_id_arr[my_hat!!])
         }
         else{
             hat_imgview.setVisibility(View.GONE)
@@ -363,6 +234,109 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         treasureDicision.pop_out_of_window = true
+    }
+    private fun getData(){
+        my_level = pref.getInt(MainActivity.KEY_LEVEL, 0)
+        my_weapon = pref.getInt(MainActivity.KEY_WEAPON, -1)
+        my_hat = pref.getInt(MainActivity.KEY_HAT, -1)
+        my_identity = pref.getString(MainActivity.KEY_IDENTITY, "General")
+        my_blood = pref.getInt(MainActivity.KEY_BLOOD, 100)
+        my_maxblood = pref.getInt(MainActivity.KEY_MAXBLOOD, 100)
+        my_points = pref.getInt(MainActivity.KEY_POINTS, 1000)
+
+        has_hat = pref.getInt(MainActivity.KEY_HAS_HAT, 0)
+        has_ax = pref.getInt(MainActivity.KEY_HAS_AX, 0)
+        has_knife = pref.getInt(MainActivity.KEY_HAS_KNIFE, 0)
+        has_gun = pref.getInt(MainActivity.KEY_HAS_GUN, 0)
+    }
+    private fun setData(){
+        pref_edit.putInt(MainActivity.KEY_LEVEL, my_level!!)
+        pref_edit.putInt(MainActivity.KEY_WEAPON, my_weapon!!)
+        pref_edit.putInt(MainActivity.KEY_HAT, my_hat!!)
+        pref_edit.putString(MainActivity.KEY_IDENTITY, my_identity)
+        pref_edit.putInt(MainActivity.KEY_BLOOD, my_blood!!)
+        pref_edit.putInt(MainActivity.KEY_MAXBLOOD, my_maxblood!!)
+        pref_edit.putInt(MainActivity.KEY_POINTS, my_points!!)
+
+        pref_edit.putInt(MainActivity.KEY_HAS_HAT, has_hat!!)
+        pref_edit.putInt(MainActivity.KEY_HAS_AX, has_ax!!)
+        pref_edit.putInt(MainActivity.KEY_HAS_KNIFE, has_knife!!)
+        pref_edit.putInt(MainActivity.KEY_HAS_GUN, has_gun!!)
+
+        pref_edit.commit()
+    }
+    private fun clickOpButton(){
+        pref_edit.putInt(MainActivity.KEY_LEVEL, 3)
+        pref_edit.putString(MainActivity.KEY_IDENTITY, "VIP")
+        pref_edit.putInt(MainActivity.KEY_BLOOD, 99999)
+        pref_edit.putInt(MainActivity.KEY_MAXBLOOD, 99999)
+        pref_edit.putInt(MainActivity.KEY_POINTS, 99999999)
+        pref_edit.commit()
+
+        getData()
+
+        if (my_weapon != -1) {
+            weapon_imgview.setVisibility(View.VISIBLE)
+            weapon_imgview.setImageResource(weapon_id_arr[my_weapon!!])
+        }
+        else{
+            weapon_imgview.setVisibility(View.GONE)
+        }
+        if (my_hat != -1){
+            hat_imgview.setVisibility(View.VISIBLE)
+            hat_imgview.setImageResource(hat_id_arr[my_hat!!])
+        }
+        else{
+            hat_imgview.setVisibility(View.GONE)
+        }
+
+        if (my_identity == "General"){
+            Identity_tv.setText(R.string.General)
+            VIP_check.is_vip = false
+            VIP_btn.setEnabled(true)
+
+        }else if(my_identity == "VIP"){
+            Identity_tv.setText(R.string.VIP)
+            VIP_check.is_vip = true
+            VIP_btn.setEnabled(false)
+        }
+        Points_tv.setText(my_points.toString())
+        Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
+    }
+    private fun clickRestartButton(){
+        pref_edit.clear().commit()
+
+        getData()
+
+        setData()
+
+        if (my_weapon != -1) {
+            weapon_imgview.setVisibility(View.VISIBLE)
+            weapon_imgview.setImageResource(weapon_id_arr[my_weapon!!])
+        }
+        else{
+            weapon_imgview.setVisibility(View.GONE)
+        }
+        if (my_hat != -1){
+            hat_imgview.setVisibility(View.VISIBLE)
+            hat_imgview.setImageResource(hat_id_arr[my_hat!!])
+        }
+        else{
+            hat_imgview.setVisibility(View.GONE)
+        }
+
+        if (my_identity == "General"){
+            Identity_tv.setText(R.string.General)
+            VIP_check.is_vip = false
+            VIP_btn.setEnabled(true)
+
+        }else if(my_identity == "VIP"){
+            Identity_tv.setText(R.string.VIP)
+            VIP_check.is_vip = true
+            VIP_btn.setEnabled(false)
+        }
+        Points_tv.setText(my_points.toString())
+        Hp_tv.setText("${my_blood.toString()}/${my_maxblood.toString()}")
     }
 }
 
