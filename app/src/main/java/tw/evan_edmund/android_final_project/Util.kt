@@ -73,7 +73,7 @@ class Util{
         fun sendNotification(context: Context, msg: String) {
             val intent = Intent()
             intent.setClass(context, MainActivity::class.java)
-
+            intent.putExtra("FROMNOTIFICATION", 1)
             val pi = PendingIntent.getActivity(context,
                 0, intent, PendingIntent.FLAG_IMMUTABLE)
             var notification: Notification? = null

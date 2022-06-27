@@ -149,11 +149,11 @@ class TreasureActivity : AppCompatActivity() , LocationListener {
             MainActivity.first.first_enter_treasure = false
             MainActivity.treasure_position.rand_x = Random.nextDouble(from = -0.003, until = 0.003)
             MainActivity.treasure_position.rand_y = Random.nextDouble(from = -0.003, until = 0.003)
+            MainActivity.treasure_position.latitude = current_latitude.toDouble() + MainActivity.treasure_position.rand_x
+            MainActivity.treasure_position.longitude = current_longitude.toDouble() + MainActivity.treasure_position.rand_y
         }
 //        Log.w("randx: ", "${rand_x}")
 //        Log.w("randy: ","${rand_y}")
-        MainActivity.treasure_position.latitude = current_latitude.toDouble() + MainActivity.treasure_position.rand_x
-        MainActivity.treasure_position.longitude = current_longitude.toDouble() + MainActivity.treasure_position.rand_y
         goal = Location("goal")
         goal.setLatitude(MainActivity.treasure_position.latitude)
         goal.setLongitude(MainActivity.treasure_position.longitude)

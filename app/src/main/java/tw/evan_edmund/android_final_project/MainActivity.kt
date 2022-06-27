@@ -6,16 +6,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.core.graphics.scaleMatrix
-import androidx.core.view.isVisible
-import org.w3c.dom.Text
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -136,7 +132,9 @@ class MainActivity : AppCompatActivity() {
             clickRestartButton()
         }
 
-        if(treasureDicision.pop_out_of_window == false){
+        val getIntent = intent
+        var isFromNotification = getIntent.getIntExtra("FROMNOTIFICATION", 0)
+        if(treasureDicision.pop_out_of_window == false && isFromNotification != 1){
             pendingintent = Util.setPendingIntent(this@MainActivity)
             am = getSystemService(Context.ALARM_SERVICE) as?
                     AlarmManager?
@@ -342,4 +340,4 @@ class MainActivity : AppCompatActivity() {
 
 val img_id_arr = intArrayOf(R.drawable.modifycat_run1, R.drawable.modifycat_run2)
 val weapon_id_arr = intArrayOf(R.drawable.modifyax,R.drawable.modifyknife, R.drawable.modifygun)
-val hat_id_arr = intArrayOf(R.drawable.modifyhat,)
+val hat_id_arr = intArrayOf(R.drawable.modifyhat)
