@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_checkout.xml" value="0.136" />
+        <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_fighting.xml" value="0.11398176291793313" />
         <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_music.xml" value="0.11398176291793313" />
         <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_store.xml" value="0.1" />
-        <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_treasure.xml" value="0.12107396149949341" />
+        <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_treasure.xml" value="0.1" />
         <entry key="..\:/code_no_upload/Android_final_project/app/src/main/res/layout/activity_vip.xml" value="0.1" />
       </map>
     </option>
